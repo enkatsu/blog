@@ -1,4 +1,15 @@
 baseURL = 'http://hugo-quickstart-template.netlify.com'
-languageCode = 'en-us'
-title = 'Netlify + Hugo Quickstart'
-theme = 'netlify-basic'
+languageCode = 'ja-jp'
+defaultContentLanguage = "ja"
+title = 'enkats log'
+theme = 'hugo-coder'
+
+[[languages.ja.menu.main]]
+name = "About"
+weight = 1
+url = "about/"
+
+[[languages.ja.menu.main]]
+name = "Blog"
+weight = 2
+url = "posts/"
