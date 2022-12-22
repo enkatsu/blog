@@ -1,15 +1,19 @@
-baseURL = 'http://hugo-quickstart-template.netlify.com'
+baseURL = 'https://blog.enkatsu.org'
 languageCode = 'ja-jp'
 defaultContentLanguage = "ja"
-title = 'enkats log'
+title = 'enkatsu log'
 theme = 'hugo-coder'
-
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+[params]
+dateFormat = '2006年01月02日'
 [[languages.ja.menu.main]]
-name = "About"
+name = 'About'
 weight = 1
-url = "about/"
-
+url = 'about/'
 [[languages.ja.menu.main]]
-name = "Blog"
+name = 'Blog'
 weight = 2
-url = "posts/"
+url = 'posts/'

@@ -51,6 +51,8 @@ Click this button and it will help you create a new repo, create a new Netlify p
     
   - Run `hugo`
 
+  - `hugo server --ignoreCache -w -D`
+
   - Then use the `netlify deploy` for a deploy preview link or `netlify deploy --prod` to deploy to production
 
   Here are a few other ways you can deploy this template:

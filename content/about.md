@@ -1,13 +1,13 @@
 +++
-author = "Hugo Authors"
-title = "Emoji Support"
-date = "2019-03-05"
-description = "Guide to emoji usage in Hugo"
+author = "Katsuya Endoh"
+title = "About"
+date = "2022-12-22"
+description = "about this site"
 tags = [
-    "emoji",
+    "",
 ]
 +++
 
-Emoji can be enabled in a Hugo project in a number of ways.
-<!--more-->
-The [`emojify`](https://gohugo.io/functions/emojify/) function can be called directly in templates or [Inline Shortcodes](https://gohugo.io/templates/shortcode-templates/#inline-shortcodes).
+このブログは<a href="https://enkatsu.org" target="_blank">遠藤勝也</a>の備忘録です。
+
+サイト内の全ての記事は、<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons License</a>の条件に従う限り自由に利用していただいて構いません。

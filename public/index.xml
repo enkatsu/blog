@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>enkats log</title>
-    <link>http://hugo-quickstart-template.netlify.com/</link>
-    <description>Recent content on enkats log</description>
+    <title>enkatsu log</title>
+    <link>https://blog.enkatsu.org/</link>
+    <description>Recent content on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://hugo-quickstart-template.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Emoji Support</title>
-      <link>http://hugo-quickstart-template.netlify.com/about/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      <title>About</title>
+      <link>https://blog.enkatsu.org/about/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://hugo-quickstart-template.netlify.com/about/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>https://blog.enkatsu.org/about/</guid>
+      <description>このブログは遠藤勝也の備忘録です。
+サイト内の全ての記事は、Creative Commons Licenseの条件に従う限り自由に利用していただいて構いません。</description>
     </item>
     
     <item>
-      <title>Emoji Support</title>
-      <link>http://hugo-quickstart-template.netlify.com/posts/hello/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      <title>p5.jsとArduinoを接続する</title>
+      <link>https://blog.enkatsu.org/posts/p5serial/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://hugo-quickstart-template.netlify.com/posts/hello/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>https://blog.enkatsu.org/posts/p5serial/</guid>
+      <description>接続方法の比較 Link to heading p5-serial(p5.serialserver + p5.serialport) Link to heading ITP Camp2016でスタートしているプロジェクト 2019 Google Summer of Codeを獲得 2022 Processing Fellowshipを獲得 Web socketを使用 様々なブラウザで動作する Webソケットサーバ（p5.serialserver）が必要 WebソケットサーバはNode.js実装とProcessing実装が用意されている Processing実装は動かなかった（Processing4.0.1） 4.1.1では動作した（https://github.com/processing/processing4/pull/577） p5.web-serial Link to heading Web Serial APIを使用 ChromeとEdgeのみで動作 スマートフォンから使うにはBTなどを使う必要がある？ p5-serialの環境構築 Link to heading 検証環境 Link to heading Node.js: v14.18.1 p5.serialserver（Webソケットサーバ側） Link to heading git clone https://github.com/p5-serial/p5.serialserver.git cd p5.serialserver npm install node startserver.js Arduino Link to heading int buttonPin = 7; void setup() { Serial.</description>
     </item>
     
   </channel>

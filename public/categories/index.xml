@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on enkats log</title>
-    <link>http://hugo-quickstart-template.netlify.com/categories/</link>
-    <description>Recent content in Categories on enkats log</description>
+    <title>Categories on enkatsu log</title>
+    <link>https://blog.enkatsu.org/categories/</link>
+    <description>Recent content in Categories on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language><atom:link href="http://hugo-quickstart-template.netlify.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja-jp</language><atom:link href="https://blog.enkatsu.org/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
