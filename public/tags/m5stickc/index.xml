@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>M5StickC on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/m5stickc/</link>
+    <description>Recent content in M5StickC on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/m5stickc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>M5StickCのファームウェア更新方法</title>
+      <link>https://blog.enkatsu.org/posts/m5stick-update/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/m5stick-update/</guid>
+      <description> 手順 Link to heading 下記のURLからファームウェアアップデートツールをダウンロードする。
+https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/software/Updater_FW20200114_A2_BTV231
+次に、下記のコマンドで実行権限を付与する。
+cd ~/Downloads chmod +x Updater_FW20200114_A2_BTV231 M5StickCをUSBで接続する。
+FinderでDownloadsを開き、Updater_FW20200114_A2_BTV231を「右クリック -&amp;gt; 開く」で実行する。
+最後に、「Press enter to continue&amp;hellip;」と表示されたらreturnを押してファームウェアアップデートを実行する。
+参考資料 Link to heading https://qiita.com/SamAkada/items/fa32d6072a832a10cd84 https://tech.fusic.co.jp/posts/2020-02-12-macos-catalina-m5stickc/ </description>
+    </item>
+    
+  </channel>
+</rss>

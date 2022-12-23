@@ -5,15 +5,30 @@
     <link>https://blog.enkatsu.org/tags/physical-computing/</link>
     <description>Recent content in Physical computing on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/physical-computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>M5StickCのファームウェア更新方法</title>
+      <link>https://blog.enkatsu.org/posts/m5stick-update/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/m5stick-update/</guid>
+      <description> 手順 Link to heading 下記のURLからファームウェアアップデートツールをダウンロードする。
+https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/software/Updater_FW20200114_A2_BTV231
+次に、下記のコマンドで実行権限を付与する。
+cd ~/Downloads chmod +x Updater_FW20200114_A2_BTV231 M5StickCをUSBで接続する。
+FinderでDownloadsを開き、Updater_FW20200114_A2_BTV231を「右クリック -&amp;gt; 開く」で実行する。
+最後に、「Press enter to continue&amp;hellip;」と表示されたらreturnを押してファームウェアアップデートを実行する。
+参考資料 Link to heading https://qiita.com/SamAkada/items/fa32d6072a832a10cd84 https://tech.fusic.co.jp/posts/2020-02-12-macos-catalina-m5stickc/ </description>
+    </item>
+    
     <item>
       <title>p5.jsとArduinoを接続する</title>
       <link>https://blog.enkatsu.org/posts/p5serial/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/p5serial/</guid>
-      <description>接続方法の比較 Link to heading p5-serial(p5.serialserver + p5.serialport) Link to heading ITP Camp2016でスタートしているプロジェクト 2019 Google Summer of Codeを獲得 2022 Processing Fellowshipを獲得 Web socketを使用 様々なブラウザで動作する Webソケットサーバ（p5.serialserver）が必要 WebソケットサーバはNode.js実装とProcessing実装が用意されている Processing実装は動かなかった（Processing4.0.1） 4.1.1では動作した（https://github.com/processing/processing4/pull/577） p5.web-serial Link to heading Web Serial APIを使用 ChromeとEdgeのみで動作 スマートフォンから使うにはBTなどを使う必要がある？ p5-serialの環境構築 Link to heading 検証環境 Link to heading Node.js: v14.18.1 p5.serialserver（Webソケットサーバ側） Link to heading git clone https://github.com/p5-serial/p5.serialserver.git cd p5.serialserver npm install node startserver.js Arduino Link to heading int buttonPin = 7; void setup() { Serial.</description>
+      <description>接続方法の比較 Link to heading p5-serial(p5.serialserver &amp;#43; p5.serialport) Link to heading ITP Camp2016でスタートしているプロジェクト 2019 Google Summer of Codeを獲得 2022 Processing Fellowshipを獲得 Web socketを使用 様々なブラウザで動作する Webソケットサーバ（p5.serialserver）が必要 WebソケットサーバはNode.js実装とProcessing実装が用意されている Processing実装は動かなかった（Processing4.0.1） 4.1.1では動作した（https://github.com/processing/processing4/pull/577） p5.web-serial Link to heading Web Serial APIを使用 ChromeとEdgeのみで動作 スマートフォンから使うにはBTなどを使う必要がある？ p5-serialの環境構築 Link to heading 検証環境 Link to heading Node.js: v14.18.1 p5.serialserver（Webソケットサーバ側） Link to heading git clone https://github.com/p5-serial/p5.serialserver.git cd p5.serialserver npm install node startserver.js Arduino Link to heading int buttonPin = 7; void setup() { Serial.</description>
     </item>
     
   </channel>

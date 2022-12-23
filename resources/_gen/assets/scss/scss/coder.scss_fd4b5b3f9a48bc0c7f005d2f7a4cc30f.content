@@ -3043,7 +3043,7 @@ html {
 body {
   color: #212121;
   background-color: #fafafa;
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", "Meiryo", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
   font-size: 1.8em;
   font-weight: 400;
   line-height: 1.8em; }
@@ -3071,7 +3071,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", "Meiryo", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
   font-weight: 600;
   color: #000;
   margin: 4rem 0 2.5rem 0; }
@@ -3278,8 +3278,6 @@ figure {
       .content article footer .see-also h3 {
         margin: 3.2rem 0; }
   .content article p {
-    text-align: justify;
-    text-justify: auto;
     hyphens: auto; }
   .content .post .post-title {
     margin-bottom: 0.75em; }
@@ -3340,7 +3338,7 @@ figure {
       font-size: 1.8rem;
       flex: 2;
       color: #212121;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", "Meiryo", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
       font-weight: 700; }
       .list ul li .title:hover, .list ul li .title:focus {
         color: #1565c0; }
@@ -3476,7 +3474,7 @@ figure {
   .navigation span {
     display: inline;
     font-size: 1.7rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", "Meiryo", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
     font-weight: 600;
     color: #212121; }
   .navigation a:hover, .navigation a:focus {
@@ -3564,7 +3562,7 @@ figure {
 .pagination {
   margin-top: 6rem;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体"; }
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans W3", "Noto Sans JP", "Meiryo", sans-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, "PingFang SC", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体"; }
   .pagination li {
     display: inline;
     text-align: center;

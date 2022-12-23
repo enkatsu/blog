@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Processing on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/processing/</link>
+    <description>Recent content in Processing on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ProcessingでQRコードを使う</title>
+      <link>https://blog.enkatsu.org/posts/processing-qrcode/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/processing-qrcode/</guid>
+      <description>はじめに Link to heading ProcessingでQRコードを使う為のライブラリは有名なところだと、 Daniel Shiffmanのqrcode-processingがあります。 ですが今回はZXingP5という、Java製のQRコードライブラリZXingのProcessingラッパーを使います。
+このライブラリの特徴はQRコードの左上、右上、左下にある四角形の座標が取得できることです。 大まかなQRコードの位置と大きさ、角度を取得することができます。 なので、このようにARマーカのようにQRコードを扱うことができます。 実はこのライブラリは自分が作ったので、コメントやIssueをいただけたら、 修正や改良をしたいと思います。
+インストール Link to heading ここからZipをダウンロードして、解凍したディレクトリをZXingP5にリネームして、PROCESSING_PATH/library に配置、 もしくはターミナルで以下のコマンドを実行します。
+cd PROCESSING_PATH/library git clone https://github.com/enkatsu/ZXingP5.git 使い方 Link to heading サンプルは3つ入っていて内容はこのようになっています。
+WriterSample: 文字列からQRコードのPImageを生成するサンプル ReaderSample: QRコードの映ったPImageから文字列を読み取るサンプル ReaderAdvancedSample: QRコードの映ったPImageから文字列と座標、大きさを読み取るサンプル 2018年1月にmakezine.jpさんで取り上げていただきました
+ProcessingでQRコードを読み書きする</description>
+    </item>
+    
+    <item>
+      <title>Processingでフォントのアウトラインを取得する</title>
+      <link>https://blog.enkatsu.org/posts/p5-font-outline/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/p5-font-outline/</guid>
+      <description>PFont font; PShape pShape; void setup() { size(300, 200); font = createFont(&amp;#34;HiraginoSans-W3&amp;#34;, 100); pShape = font.getShape(&amp;#39;P&amp;#39;, 1); pShape.beginShape(); pShape.strokeWeight(1); pShape.stroke(0); pShape.fill(255); pShape.endShape(); background(100); translate(100, 100); shape(pShape, 0, 0); } void draw() { } PFont font; PShape anchor, shape; ArrayList&amp;lt;PVector&amp;gt; vectors; float x = 100; float y = 100; int holdIndex = -1; void setup() { size(300, 200); font = createFont(&amp;#34;HiraginoSans-W3&amp;#34;, 100); shape = font.getShape(&amp;#39;P&amp;#39;, 1); shape.beginShape(); shape.strokeWeight(1); shape.stroke(0); shape.fill(255); shape.endShape(); anchor = font.</description>
+    </item>
+    
+  </channel>
+</rss>

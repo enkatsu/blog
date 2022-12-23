@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="jp">
   <head>
     <title>
   p5.jsとArduinoを接続する · enkatsu log
@@ -11,8 +11,9 @@
 
 
 
+<meta name="author" content="Katsuya Endoh">
 <meta name="description" content="p5.jsとArduinoを接続する">
-<meta name="keywords" content="">
+<meta name="keywords" content="blog,developer,personal">
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="p5.jsとArduinoを接続する"/>
@@ -36,12 +37,18 @@
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.15e64dc0fa4388001e5210c15466b4cc26571ab564ad8705c4e42f32efeca639.css" integrity="sha256-FeZNwPpDiAAeUhDBVGa0zCZXGrVkrYcFxOQvMu/spjk=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.min.3c965c56d9140bb859c2309e88a6224827bf3364f7c7d977c4e79ef71fb4d420.css" integrity="sha256-PJZcVtkUC7hZwjCeiKYiSCe/M2T3x9l3xOee9x&#43;01CA=" crossorigin="anonymous" media="screen" />
 
 
 
 
 
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.37d77829a3bd028e04395e53e984011a0f63cff217c47c6926ec316ce4433ae1.css" integrity="sha256-N9d4KaO9Ao4EOV5T6YQBGg9jz/IXxHxpJuwxbORDOuE=" crossorigin="anonymous" media="screen" />
+  
 
 
 
@@ -73,14 +80,10 @@
 
 
 
-<body class="preload-transitions colorscheme-light">
-  
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
-</div>
 
+
+<body class="preload-transitions colorscheme-dark">
+  
 
   <main class="wrapper">
     <nav class="navigation">
@@ -102,6 +105,10 @@
           
             <li class="navigation-item">
               <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
             </li>
           
         
@@ -163,7 +170,7 @@
   </a>
 </h1>
 <h2 id="p5-serialp5serialserver--p5serialporthttpsgithubcomp5-serial">
-  <a href="https://github.com/p5-serial">p5-serial(p5.serialserver + p5.serialport)</a>
+  <a href="https://github.com/p5-serial" target="_blank">p5-serial(p5.serialserver &#43; p5.serialport)</a>
   <a class="heading-link" href="#p5-serialp5serialserver--p5serialporthttpsgithubcomp5-serial">
     <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
@@ -196,7 +203,7 @@
 </li>
 </ul>
 <h2 id="p5web-serialhttpsgithubcomgohaip5webserial">
-  <a href="https://github.com/gohai/p5.webserial">p5.web-serial</a>
+  <a href="https://github.com/gohai/p5.webserial" target="_blank">p5.web-serial</a>
   <a class="heading-link" href="#p5web-serialhttpsgithubcomgohaip5webserial">
     <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
@@ -260,8 +267,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Serial</span>.<span style="color:#a6e22e">write</span>(buttonIsPressed);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
-<li><a href="https://rephtone.com/electronics/arduino-buttons/">https://rephtone.com/electronics/arduino-buttons/</a></li>
-<li><a href="https://rephtone.com/wp-content/uploads/2019/06/Fritzing-4-1024x719.jpg">https://rephtone.com/wp-content/uploads/2019/06/Fritzing-4-1024x719.jpg</a></li>
+<li><a href="https://rephtone.com/electronics/arduino-buttons/" target="_blank">https://rephtone.com/electronics/arduino-buttons/</a></li>
+<li><a href="https://rephtone.com/wp-content/uploads/2019/06/Fritzing-4-1024x719.jpg" target="_blank">https://rephtone.com/wp-content/uploads/2019/06/Fritzing-4-1024x719.jpg</a></li>
 </ul>
 <h2 id="p5serialportp5js側">
   p5.serialport（p5.js側）
@@ -285,7 +292,7 @@
 <li>examplesの01-basics以外はポートの更新が正常に動作していない。
 <ul>
 <li>sketch.jsの <code>updatePort()</code> に <code>serial.openPort(serialPortName)</code> を書き足す必要がある</li>
-<li><a href="https://github.com/p5-serial/p5.serialport/tree/main/examples">https://github.com/p5-serial/p5.serialport/tree/main/examples</a>
+<li><a href="https://github.com/p5-serial/p5.serialport/tree/main/examples" target="_blank">https://github.com/p5-serial/p5.serialport/tree/main/examples</a>
 <ul>
 <li>2022/01/22 examples修正済み</li>
 </ul>
@@ -317,10 +324,10 @@
     ©
     
     2022
-    
+     Katsuya Endoh 
     ·
     
-    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+     <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
     
   </section>
 </footer>

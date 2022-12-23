@@ -5,14 +5,32 @@
     <link>https://blog.enkatsu.org/tags/</link>
     <description>Recent content in Tags on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AR</title>
+      <link>https://blog.enkatsu.org/tags/ar/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/ar/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Arduino</title>
       <link>https://blog.enkatsu.org/tags/arduino/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>M5StickC</title>
+      <link>https://blog.enkatsu.org/tags/m5stickc/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/m5stickc/</guid>
       <description></description>
     </item>
     
@@ -31,6 +49,24 @@
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/physical-computing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Processing</title>
+      <link>https://blog.enkatsu.org/tags/processing/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/processing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>QR Code</title>
+      <link>https://blog.enkatsu.org/tags/qr-code/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/qr-code/</guid>
       <description></description>
     </item>
     
