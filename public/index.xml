@@ -6,7 +6,25 @@
     <description>Recent content on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Processingライブラリを作る</title>
+      <link>https://blog.enkatsu.org/posts/p5library-gradle-template/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/p5library-gradle-template/</guid>
+      <description>Processingライブラリを作ろうとすると、 パスの設定などめんどくさい作業が多いです。
+そこで、Gradleを使って簡単にライブラリを作れるテンプレートを作ったので紹介したいと思います。
+準備 Link to heading まずはGradleをインストールしましょう。
+Macの場合、Homebrewが入っていれば brew install gradle でインストールできます。
+processing-library-template-gradleを使ったライブラリの作り方 Link to heading ライブラリのテンプレートはこちらを使っていきます。
+今回はhelloP5Libというライブラリを作る想定で書いていきます。
+クラスはhello.p5.libパッケージのHelloクラスのみです。 このライブラリの使い方はこんな感じです。
+import hello.p5.lib.*; Hello hello; void setup() { size(300, 300); hello = new Hello(this, &amp;#34;Taro&amp;#34;); } void draw() { background(0); hello.draw(100, 100); } 使い方 Link to heading GitHubのprocessing-library-template-gradleのページから、 Use this template を選択して、テンプレートを使用したリポジトリを作成して、ローカルにクローンしてきます。
+git clone https://github.com/enkatsu/${YOUR_REPOSITORY}.git この時のディレクトリ構造はこんな感じです。
+. ├── LICENSE ├── README.md ├── build.gradle ├── examples # ライブラリのサンプルスケッチ │ └── HelloLibrary │ └── HelloLibrary.</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>https://blog.enkatsu.org/about/</link>
