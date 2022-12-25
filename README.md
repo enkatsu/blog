@@ -42,6 +42,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
  - Start the Hugo sever & check it out:
 
    - `hugo server -D`
+   - `hugo server --ignoreCache -w -D`
    - go to [http://localhost:1313/](http://localhost:1313/)
 
   > Alternatively, you can run this locally with [the Netlify CLI](https://docs.netlify.com/cli/get-started/)'s by running the `netlify dev` command for more options like receiving a live preview to share (`netlify dev --live`) and the ability to test [Netlify Functions](https://www.netlify.com/products/functions) and [redirects](https://docs.netlify.com/routing/redirects/). 
@@ -50,8 +51,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
   - Install the Netlify CLI globally `npm install netlify-cli -g`
     
   - Run `hugo`
-
-  - `hugo server --ignoreCache -w -D`
+  - `hugo --buildFuture`
 
   - Then use the `netlify deploy` for a deploy preview link or `netlify deploy --prod` to deploy to production
 

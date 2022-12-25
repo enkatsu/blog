@@ -1,26 +1,26 @@
 +++
 author = "Katsuya Endoh"
-title = "UnityでReacTIVisionを使う方法"
+title = "UnityでreacTIVisionを使う方法"
 date = "2022-12-24"
-description = "UnityでReacTIVisionを使う方法"
+description = "UnityでreacTIVisionを使う方法"
 tags = [
     "Unity",
     "reacTIVision",
-    "C#",
+    "C Sharp",
 ]
 +++
 
 # ライブラリのダウンロード
 
-ここからTUIO11_NETをダウンロードする．
+ここからTUIO11_NETをダウンロードする。
 
 [https://sourceforge.net/projects/reactivision/files/TUIO 1.1/TUIO-Clients 1.1.5/](https://sourceforge.net/projects/reactivision/files/TUIO%201.1/TUIO-Clients%201.1.5/)
 
 # ライブラリのインポート
 
-TUIO11_NETの中にある，以下のファイルを削除する．
-これらのファイルは，C#でTUIOを扱うサンプルプロジェクトだが，
-Unityに取り込んだ際にエラーが発生してしまうため削除しておく．
+TUIO11_NETの中にある、以下のファイルを削除する。
+これらのファイルは、C#でTUIOを扱うサンプルプロジェクトだが、
+Unityに取り込んだ際にエラーが発生してしまうため削除しておく。
 
 - TUIO_CSHARP.sln
 - TUIO_DEMO.csproj
@@ -29,16 +29,17 @@ Unityに取り込んだ際にエラーが発生してしまうため削除して
 - TuioDemo.cs
 - TuioDemoObject.cs
 - TuioDump.cs
-TUIO11_NETをUnityプロジェクトのAssets以下に配置する．
+
+TUIO11_NETをUnityプロジェクトのAssets以下に配置する。
 
 # サンプルの実行
 
-Create EmptyでEmptyGameObjectを作成し，
+Create EmptyでEmptyGameObjectを作成し、
 Add Component > New script
-から新規のコンポーネントを追加する．
-次に，作成したコードに下記のコードに置き換える．
-ReacTIVisionを起動した状態で，
-UnityプロジェクトをRunすれば動作する．
+から新規のコンポーネントを追加する。
+次に、作成したコードに下記のコードに置き換える。
+ReacTIVisionを起動した状態で、
+UnityプロジェクトをRunすれば動作する。
 
 ```csharp
 using TUIO;
@@ -107,7 +108,11 @@ public class ReactiVisionMain : MonoBehaviour, TuioListener
 }
 ```
 
-# メインスレッドで実行するサンプル
+# コールバック内の処理をメインスレッドで実行するサンプル
+
+ゲームオブジェクトの操作などはメインスレッドでしか実行できないが、
+TuioListenerのコールバック関数は、メインスレッド外で実行されてしまう。
+なので、 `Start()` でメインスレッドの `SynchronizationContext` を取得しておく必要がある。
 
 ```csharp
 using TUIO;

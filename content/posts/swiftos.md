@@ -1,8 +1,8 @@
 +++
 author = "Katsuya Endoh"
-title = "SwiftOSC"
+title = "SwiftOSCをmacOSアプリ開発に使う方法"
 date = "2022-12-24"
-description = "SwiftOSC"
+description = "SwiftOSCをmacOSアプリ開発に使う方法"
 tags = [
     "iOS",
     "Swift",
@@ -10,7 +10,7 @@ tags = [
 ]
 +++
 
-Swift Package Managerからインストールする方法
+# Swift Package Managerからインストールする方法
 
 下記のPRが出ているが，まだマージされていないので
 
@@ -19,6 +19,10 @@ Swift Package Managerからインストールする方法
 下記のリポジトリとブランチを指定してインストールする
 
 [https://github.com/soundflix/SwiftOSC/tree/dev](https://github.com/soundflix/SwiftOSC/tree/dev)
+
+# UDPを使用する際のエラー対応
+
+`App Sandbox` -> `Network` -> `Incomming Connections (Server)` と `Outgoing Connections (Client)` にチェックを入れる
 
 ![/images/swiftosc.png](/images/swiftosc.png)
 

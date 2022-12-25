@@ -2,22 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.enkatsu.org/</loc>
-    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+    <loc>https://blog.enkatsu.org/tags/c-sharp/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.enkatsu.org/tags/java/</loc>
-    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+    <loc>https://blog.enkatsu.org/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/ios/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/osc/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.enkatsu.org/posts/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/reactivision/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/swift/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/posts/swiftos/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/unity/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/posts/unity-reactivision/</loc>
+    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.enkatsu.org/tags/java/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.enkatsu.org/tags/processing/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.enkatsu.org/posts/p5library-gradle-template/</loc>
-    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.enkatsu.org/tags/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.enkatsu.org/about/</loc>
