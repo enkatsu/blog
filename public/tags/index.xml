@@ -6,7 +6,25 @@
     <description>Recent content in Tags on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arduino</title>
+      <link>https://blog.enkatsu.org/tags/arduino/</link>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Physical computing</title>
+      <link>https://blog.enkatsu.org/tags/physical-computing/</link>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/physical-computing/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>C Sharp</title>
       <link>https://blog.enkatsu.org/tags/c-sharp/</link>
@@ -89,15 +107,6 @@
     </item>
     
     <item>
-      <title>Arduino</title>
-      <link>https://blog.enkatsu.org/tags/arduino/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.enkatsu.org/tags/arduino/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>M5StickC</title>
       <link>https://blog.enkatsu.org/tags/m5stickc/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
@@ -112,15 +121,6 @@
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/p5.js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Physical computing</title>
-      <link>https://blog.enkatsu.org/tags/physical-computing/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.enkatsu.org/tags/physical-computing/</guid>
       <description></description>
     </item>
     

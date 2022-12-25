@@ -6,7 +6,20 @@
     <description>Recent content in Arduino on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ArduinoとWiiヌンチャクコントローラでマウスを作る</title>
+      <link>https://blog.enkatsu.org/posts/arduino-wii-nunchuck/</link>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/arduino-wii-nunchuck/</guid>
+      <description>
+目的 Link to heading Wiiヌンチャクコントローラでマウスを作る
+材料 Link to heading Arduino Leonardo Wiiヌンチャクコントローラ 手順 Link to heading &amp;amp;ldquo;wii nunchuck arduino&amp;amp;rdquo;などで検索すると色々資料が出てくる。 WiiヌンチャクコントローラはI2C通信を使用しているようなので、Wireライブラリを使用する。 またArduinoによりマウス操作を行うため、Mouseライブラリを使用する。 MouseライブラリはArduino LeonardoとArduino Microに対応しているので、今回はArduino Leonardoを使用した。 Wiiヌンチャクコントローラの端子を切ってワイヤストリッパで剥くとこんな感じに赤、黒、緑、黄色の線が出てくる。 これらを以下のように配線する。
++(赤) -&amp;gt; 3.3V -(黒) -&amp;gt; GND SDA(緑) -&amp;gt; D2 SCL(黄色) -&amp;gt; D3 プログラムは以下のリポジトリから enkatsu/NunchuckMouse
+課題 Link to heading 今のままではスクロールができないのでブラウザの操作が困難 マウスのスピードを調整可能にする 参考 Link to heading todbot/wiichuck_adapter 片手でゲームをしたい！ </description>
+    </item>
+    
     <item>
       <title>p5.jsとArduinoを接続する</title>
       <link>https://blog.enkatsu.org/posts/p5serial/</link>
