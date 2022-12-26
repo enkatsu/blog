@@ -1,11 +1,12 @@
 +++
 author = "Katsuya Endoh"
-title = "Processingライブラリを作る"
+title = "Gradleを使ってProcessingライブラリを作る"
 date = "2022-12-23"
-description = "Processingライブラリを作る"
+description = "Gradleを使ってProcessingライブラリを作る"
 tags = [
     "Processing",
     "Java",
+    "Gradle",
 ]
 +++
 

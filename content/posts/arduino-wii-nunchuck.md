@@ -22,7 +22,7 @@ Wiiヌンチャクコントローラでマウスを作る
 
 # 手順
 
-["wii nunchuck arduino"](https://www.google.co.jp/search?q=wii+nunchuck+arduino&oq=wii+nunchuck+arduino&aqs=chrome..69i57j69i60l3j0l2.2182j0j4&sourceid=chrome&ie=UTF-8)などで検索すると色々資料が出てくる。
+[「wii nunchuck arduino」](https://www.google.co.jp/search?q=wii+nunchuck+arduino&oq=wii+nunchuck+arduino&aqs=chrome..69i57j69i60l3j0l2.2182j0j4&sourceid=chrome&ie=UTF-8)などで検索すると色々資料が出てくる。
 WiiヌンチャクコントローラはI2C通信を使用しているようなので、Wireライブラリを使用する。
 またArduinoによりマウス操作を行うため、Mouseライブラリを使用する。
 MouseライブラリはArduino LeonardoとArduino Microに対応しているので、今回はArduino Leonardoを使用した。

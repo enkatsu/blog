@@ -3,6 +3,7 @@ languageCode = 'ja'
 defaultContentLanguage = "jp"
 title = 'enkatsu log'
 theme = 'hugo-coder'
+timeZone='Asia/Tokyo'
 [markup]
     [markup.goldmark]
         [markup.goldmark.renderer]

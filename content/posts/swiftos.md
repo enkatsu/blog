@@ -4,7 +4,6 @@ title = "SwiftOSCをmacOSアプリ開発に使う方法"
 date = "2022-12-24"
 description = "SwiftOSCをmacOSアプリ開発に使う方法"
 tags = [
-    "iOS",
     "Swift",
     "OSC",
 ]

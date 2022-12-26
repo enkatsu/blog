@@ -6,11 +6,11 @@
     <description>Recent content in Processing on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Processingライブラリを作る</title>
+      <title>Gradleを使ってProcessingライブラリを作る</title>
       <link>https://blog.enkatsu.org/posts/p5library-gradle-template/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/p5library-gradle-template/</guid>
       <description>Processingライブラリを作ろうとすると、 パスの設定などめんどくさい作業が多いです。
@@ -28,7 +28,7 @@ git clone https://github.com/enkatsu/${YOUR_REPOSITORY}.git この時のディ�
     <item>
       <title>ProcessingでQRコードを使う</title>
       <link>https://blog.enkatsu.org/posts/processing-qrcode/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/processing-qrcode/</guid>
       <description>はじめに Link to heading ProcessingでQRコードを使う為のライブラリは有名なところだと、 Daniel Shiffmanのqrcode-processingがあります。 ですが今回はZXingP5という、Java製のQRコードライブラリZXingのProcessingラッパーを使います。
@@ -42,7 +42,7 @@ ProcessingでQRコードを読み書きする</description>
     <item>
       <title>Processingでフォントのアウトラインを取得する</title>
       <link>https://blog.enkatsu.org/posts/p5-font-outline/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/p5-font-outline/</guid>
       <description>PFont font; PShape pShape; void setup() { size(300, 200); font = createFont(&amp;#34;HiraginoSans-W3&amp;#34;, 100); pShape = font.getShape(&amp;#39;P&amp;#39;, 1); pShape.beginShape(); pShape.strokeWeight(1); pShape.stroke(0); pShape.fill(255); pShape.endShape(); background(100); translate(100, 100); shape(pShape, 0, 0); } void draw() { } PFont font; PShape anchor, shape; ArrayList&amp;lt;PVector&amp;gt; vectors; float x = 100; float y = 100; int holdIndex = -1; void setup() { size(300, 200); font = createFont(&amp;#34;HiraginoSans-W3&amp;#34;, 100); shape = font.getShape(&amp;#39;P&amp;#39;, 1); shape.beginShape(); shape.strokeWeight(1); shape.stroke(0); shape.fill(255); shape.endShape(); anchor = font.</description>

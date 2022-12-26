@@ -6,11 +6,11 @@
     <description>Recent content in Tags on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arduino</title>
       <link>https://blog.enkatsu.org/tags/arduino/</link>
-      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/arduino/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>Physical computing</title>
       <link>https://blog.enkatsu.org/tags/physical-computing/</link>
-      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/physical-computing/</guid>
       <description></description>
@@ -28,25 +28,16 @@
     <item>
       <title>C Sharp</title>
       <link>https://blog.enkatsu.org/tags/c-sharp/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/c-sharp/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>iOS</title>
-      <link>https://blog.enkatsu.org/tags/ios/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.enkatsu.org/tags/ios/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>OSC</title>
       <link>https://blog.enkatsu.org/tags/osc/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/osc/</guid>
       <description></description>
@@ -55,7 +46,7 @@
     <item>
       <title>reacTIVision</title>
       <link>https://blog.enkatsu.org/tags/reactivision/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/reactivision/</guid>
       <description></description>
@@ -64,7 +55,7 @@
     <item>
       <title>Swift</title>
       <link>https://blog.enkatsu.org/tags/swift/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/swift/</guid>
       <description></description>
@@ -73,16 +64,25 @@
     <item>
       <title>Unity</title>
       <link>https://blog.enkatsu.org/tags/unity/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/unity/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Gradle</title>
+      <link>https://blog.enkatsu.org/tags/gradle/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/gradle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Java</title>
       <link>https://blog.enkatsu.org/tags/java/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/java/</guid>
       <description></description>
@@ -91,7 +91,7 @@
     <item>
       <title>Processing</title>
       <link>https://blog.enkatsu.org/tags/processing/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/processing/</guid>
       <description></description>
@@ -100,7 +100,7 @@
     <item>
       <title>AR</title>
       <link>https://blog.enkatsu.org/tags/ar/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/ar/</guid>
       <description></description>
@@ -109,7 +109,7 @@
     <item>
       <title>M5StickC</title>
       <link>https://blog.enkatsu.org/tags/m5stickc/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/m5stickc/</guid>
       <description></description>
@@ -118,7 +118,7 @@
     <item>
       <title>p5.js</title>
       <link>https://blog.enkatsu.org/tags/p5.js/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/p5.js/</guid>
       <description></description>
@@ -127,7 +127,7 @@
     <item>
       <title>QR Code</title>
       <link>https://blog.enkatsu.org/tags/qr-code/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/qr-code/</guid>
       <description></description>

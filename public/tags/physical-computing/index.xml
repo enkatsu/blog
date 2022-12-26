@@ -6,16 +6,16 @@
     <description>Recent content in Physical computing on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/physical-computing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/physical-computing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ArduinoとWiiヌンチャクコントローラでマウスを作る</title>
       <link>https://blog.enkatsu.org/posts/arduino-wii-nunchuck/</link>
-      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/arduino-wii-nunchuck/</guid>
       <description>
 目的 Link to heading Wiiヌンチャクコントローラでマウスを作る
-材料 Link to heading Arduino Leonardo Wiiヌンチャクコントローラ 手順 Link to heading &amp;amp;ldquo;wii nunchuck arduino&amp;amp;rdquo;などで検索すると色々資料が出てくる。 WiiヌンチャクコントローラはI2C通信を使用しているようなので、Wireライブラリを使用する。 またArduinoによりマウス操作を行うため、Mouseライブラリを使用する。 MouseライブラリはArduino LeonardoとArduino Microに対応しているので、今回はArduino Leonardoを使用した。 Wiiヌンチャクコントローラの端子を切ってワイヤストリッパで剥くとこんな感じに赤、黒、緑、黄色の線が出てくる。 これらを以下のように配線する。
+材料 Link to heading Arduino Leonardo Wiiヌンチャクコントローラ 手順 Link to heading 「wii nunchuck arduino」などで検索すると色々資料が出てくる。 WiiヌンチャクコントローラはI2C通信を使用しているようなので、Wireライブラリを使用する。 またArduinoによりマウス操作を行うため、Mouseライブラリを使用する。 MouseライブラリはArduino LeonardoとArduino Microに対応しているので、今回はArduino Leonardoを使用した。 Wiiヌンチャクコントローラの端子を切ってワイヤストリッパで剥くとこんな感じに赤、黒、緑、黄色の線が出てくる。 これらを以下のように配線する。
 +(赤) -&amp;gt; 3.3V -(黒) -&amp;gt; GND SDA(緑) -&amp;gt; D2 SCL(黄色) -&amp;gt; D3 プログラムは以下のリポジトリから enkatsu/NunchuckMouse
 課題 Link to heading 今のままではスクロールができないのでブラウザの操作が困難 マウスのスピードを調整可能にする 参考 Link to heading todbot/wiichuck_adapter 片手でゲームをしたい！ </description>
     </item>
@@ -23,7 +23,7 @@
     <item>
       <title>M5StickCのファームウェア更新方法</title>
       <link>https://blog.enkatsu.org/posts/m5stick-update/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/m5stick-update/</guid>
       <description> 手順 Link to heading 下記のURLからファームウェアアップデートツールをダウンロードする。
@@ -38,7 +38,7 @@ FinderでDownloadsを開き、Updater_FW20200114_A2_BTV231を「右クリック 
     <item>
       <title>p5.jsとArduinoを接続する</title>
       <link>https://blog.enkatsu.org/posts/p5serial/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/p5serial/</guid>
       <description>接続方法の比較 Link to heading p5-serial(p5.serialserver &amp;#43; p5.serialport) Link to heading ITP Camp2016でスタートしているプロジェクト 2019 Google Summer of Codeを獲得 2022 Processing Fellowshipを獲得 Web socketを使用 様々なブラウザで動作する Webソケットサーバ（p5.serialserver）が必要 WebソケットサーバはNode.js実装とProcessing実装が用意されている Processing実装は動かなかった（Processing4.0.1） 4.1.1では動作した（https://github.com/processing/processing4/pull/577） p5.web-serial Link to heading Web Serial APIを使用 ChromeとEdgeのみで動作 スマートフォンから使うにはBTなどを使う必要がある？ p5-serialの環境構築 Link to heading 検証環境 Link to heading Node.js: v14.18.1 p5.serialserver（Webソケットサーバ側） Link to heading git clone https://github.com/p5-serial/p5.serialserver.git cd p5.serialserver npm install node startserver.js Arduino Link to heading int buttonPin = 7; void setup() { Serial.</description>

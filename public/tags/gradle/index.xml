@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on enkatsu log</title>
-    <link>https://blog.enkatsu.org/tags/java/</link>
-    <description>Recent content in Java on enkatsu log</description>
+    <title>Gradle on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/gradle/</link>
+    <description>Recent content in Gradle on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gradleを使ってProcessingライブラリを作る</title>
       <link>https://blog.enkatsu.org/posts/p5library-gradle-template/</link>

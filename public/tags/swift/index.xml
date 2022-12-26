@@ -6,11 +6,11 @@
     <description>Recent content in Swift on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/swift/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/swift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SwiftOSCをmacOSアプリ開発に使う方法</title>
       <link>https://blog.enkatsu.org/posts/swiftos/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/posts/swiftos/</guid>
       <description> Swift Package Managerからインストールする方法 Link to heading 下記のPRが出ているが，まだマージされていないので
