@@ -6,7 +6,34 @@
     <description>Recent content in Tags on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EJS</title>
+      <link>https://blog.enkatsu.org/tags/ejs/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/ejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gulp</title>
+      <link>https://blog.enkatsu.org/tags/gulp/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/gulp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>p5.js</title>
+      <link>https://blog.enkatsu.org/tags/p5.js/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/p5.js/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Arduino</title>
       <link>https://blog.enkatsu.org/tags/arduino/</link>
@@ -112,15 +139,6 @@
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/m5stickc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>p5.js</title>
-      <link>https://blog.enkatsu.org/tags/p5.js/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
-      <guid>https://blog.enkatsu.org/tags/p5.js/</guid>
       <description></description>
     </item>
     
