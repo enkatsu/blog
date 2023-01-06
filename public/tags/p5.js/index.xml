@@ -6,7 +6,18 @@
     <description>Recent content in p5.js on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/p5.js/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/p5.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>p5.jsとMatter.jsを組み合わせる</title>
+      <link>https://blog.enkatsu.org/posts/matter-p5js/</link>
+      <pubDate>Thu, 05 Jan 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/posts/matter-p5js/</guid>
+      <description>p5.jsと Matter.jsを 組み合わせる資料が意外と少なかったのでメモ。
+シンプルなやつ Link to heading シンプルに、staticな壁で囲んで、中にボールをいくつか入れるやつ。
+Sorry, your browser doesn&#39;t support embedded videos. &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta http-equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=edge&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;circle&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js&amp;#34; integrity=&amp;#34;sha512-5T245ZTH0m0RfONiFm2NF0zcYcmAuNzcGyPSQ18j8Bs5Pbfhp5HP1hosrR8XRt5M3kSRqzjNMYpm2+it/AUX/g==&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; referrerpolicy=&amp;#34;no-referrer&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;./sketch.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body style=&amp;#34;background-color: #222222&amp;#34;&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; let engine; const bodies = []; let Engine, Runner, Bodies, Composite; function setup() { createCanvas(600, 600); Engine = Matter.Engine; Runner = Matter.Runner; Bodies = Matter.Bodies; Composite = Matter.</description>
+    </item>
+    
     <item>
       <title>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</title>
       <link>https://blog.enkatsu.org/posts/p5js-garally-template/</link>
