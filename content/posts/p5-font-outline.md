@@ -111,6 +111,8 @@ void mouseDragged() {
 
 ```
 
-<video controls playsinline muted="true" width="100%" src="/videos/p5-font-outline.mov" type="video/mp4" >
- Sorry, your browser doesn't support embedded videos.
+<video controls playsinline muted="true" width="100%" type="video/mp4" poster="/images/p5-font-outline-spring.png">
+  <source src="/videos/p5-font-outline.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
 </video>

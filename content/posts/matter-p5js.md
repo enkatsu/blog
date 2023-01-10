@@ -18,8 +18,10 @@ tags = [
 
 シンプルに、staticな壁で囲んで、中にボールをいくつか入れるやつ。
 
-<video controls playsinline muted="true" width="100%" src="/videos/matter-p5js-simple-480.mov" type="video/mp4" >
- Sorry, your browser doesn't support embedded videos.
+<video controls playsinline muted="true" width="100%" type="video/mp4" poster="/images/matter-p5js-simple-480.png">
+  <source src="/videos/matter-p5js-simple-480.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
 </video>
 
 ```html
@@ -94,8 +96,10 @@ function draw() {
 物理演算でレイアウトする必要があったので、その際のコードも置いておく。
 シンプルなやつの、ボールに内接する正方形をレンダリングするやつ。
 
-<video controls playsinline muted="true" width="100%" src="/videos/matter-p5js-480.mov" type="video/mp4" >
- Sorry, your browser doesn't support embedded videos.
+<video controls playsinline muted="true" width="100%" type="video/mp4" poster="/images/matter-p5js-480.png">
+  <source src="/videos/matter-p5js-480.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
 </video>
 
 ```html
