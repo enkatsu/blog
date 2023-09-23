@@ -9,16 +9,11 @@
     <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/unity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UnityでreacTIVisionを使う方法</title>
-      <link>https://blog.enkatsu.org/posts/unity-reactivision/</link>
+      <link>https://blog.enkatsu.org/post/unity-reactivision/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.enkatsu.org/posts/unity-reactivision/</guid>
-      <description>ライブラリのダウンロード Link to heading ここからTUIO11_NETをダウンロードする。
-https://sourceforge.net/projects/reactivision/files/TUIO 1.1/TUIO-Clients 1.1.5/
-ライブラリのインポート Link to heading TUIO11_NETの中にある、以下のファイルを削除する。 これらのファイルは、C#でTUIOを扱うサンプルプロジェクトだが、 Unityに取り込んだ際にエラーが発生してしまうため削除しておく。
-TUIO_CSHARP.sln TUIO_DEMO.csproj TUIO_DUMP.csproj TUIO_LIB.csproj TuioDemo.cs TuioDemoObject.cs TuioDump.cs TUIO11_NETをUnityプロジェクトのAssets以下に配置する。
-サンプルの実行 Link to heading Create EmptyでEmptyGameObjectを作成し、 Add Component &amp;gt; New script から新規のコンポーネントを追加する。 次に、作成したコードに下記のコードに置き換える。 ReacTIVisionを起動した状態で、 UnityプロジェクトをRunすれば動作する。
-using TUIO; using UnityEngine; public class ReactiVisionMain : MonoBehaviour, TuioListener { private TuioClient client; void Start() { client = new TuioClient(3333); client.addTuioListener(this); client.connect(); if (client.isConnected()) { Debug.Log(&amp;#34;connect!!&amp;#34;); } } void Update() { } public void addTuioBlob(TuioBlob tblb) { } public void addTuioCursor(TuioCursor tcur) { } public void addTuioObject(TuioObject tobj) { Debug.</description>
+      <guid>https://blog.enkatsu.org/post/unity-reactivision/</guid>
+      <description></description>
     </item>
     
   </channel>

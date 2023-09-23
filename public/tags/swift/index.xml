@@ -9,16 +9,11 @@
     <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/swift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SwiftOSCをmacOSアプリ開発に使う方法</title>
-      <link>https://blog.enkatsu.org/posts/swiftos/</link>
+      <link>https://blog.enkatsu.org/post/swiftos/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.enkatsu.org/posts/swiftos/</guid>
-      <description> Swift Package Managerからインストールする方法 Link to heading 下記のPRが出ているが，まだマージされていないので
-https://github.com/ExistentialAudio/SwiftOSC/pull/61
-下記のリポジトリとブランチを指定してインストールする
-https://github.com/soundflix/SwiftOSC/tree/dev
-UDPを使用する際のエラー対応 Link to heading App Sandbox -&amp;gt; Network -&amp;gt; Incomming Connections (Server) と Outgoing Connections (Client) にチェックを入れる
-https://github.com/Kitura/BlueSocket/issues/103 https://stackoverflow.com/questions/47797446/nsposixerrordomain-when-binding-to-socket-on-macos-10-12 </description>
+      <guid>https://blog.enkatsu.org/post/swiftos/</guid>
+      <description></description>
     </item>
     
   </channel>

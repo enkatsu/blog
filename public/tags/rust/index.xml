@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/rust/</link>
+    <description>Recent content in Rust on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 22 Jul 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Processing（Java）からRustの関数を呼び出す</title>
+      <link>https://blog.enkatsu.org/post/processing-rust/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/processing-rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSC Broadcasterを作った話</title>
+      <link>https://blog.enkatsu.org/post/osc-broadcaster/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/osc-broadcaster/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Mozziのドキュメントを読みつつ翻訳する「Mozziスケッチの解剖学」 &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Mozziのドキュメントを読みつつ翻訳する「Mozziスケッチの解剖学」</h1>
+    </header>
+    
+    <div class="content__body">
+        <p>前回は<a href="../mozzi-doc01">こちら</a></p>
+<h1 id="mozziスケッチの解剖学httpssensoriumgithubiomozzilearna-simple-sketch"><a href="https://sensorium.github.io/Mozzi/learn/a-simple-sketch/" target="_blank">Mozziスケッチの解剖学</a></h1>
+<blockquote>
+<p>Here’s a detailed explanation of the parts in a Mozzi sketch.
+We’ll start by generating audio to produce a plain sine wave,
+then add control to the sketch to change the sine wave’s frequency and produce vibrato.</p>
+</blockquote>
+<p>ここでは、Mozziのスケッチに含まれるパーツを詳しく説明します。
+まずはプレーンな正弦波からオーディオを生成し、
+スケッチに制御を加えて正弦波の周波数を変化させ、ビブラートを発生させるところからスタートします。</p>
+<blockquote>
+<p>Bare bones example: playing a sine wavePermalink</p>
+<p>Let’s make a minimal Mozzi sketch step by step.
+The sketch plays a sine wave at a specified frequency.
+No great feat, and you can find lots of other Arduino sketches doing it without Mozzi,
+but it gives the gist of how a Mozzi sketch works.
+You don’t need much experience with Arduino or programming.</p>
+<p>First <code>#include &lt;MozziGuts.h&gt;</code>.
+You always need this, as well as headers for any Mozzi classes,
+modules or tables used in the sketch.
+This time we’ll have an oscillator and a wavetable for the oscillator to play:</p>
+</blockquote>
+<h2 id="素の例-正弦波を再生する">素の例: 正弦波を再生する</h2>
+<p>最小限のMozziスケッチを順を追って作ってみましょう。
+このスケッチは、指定した周波数の正弦波を再生します。
+Mozziを使わなくても、他のArduinoスケッチでそれを行うことができますが、
+Mozziスケッチがどのように動作するか要点がわかります。
+Arduinoやプログラミングの経験はあまり必要ありません。</p>
+<p>まず <code>#include &lt;MozziGuts.h&gt;</code> です。
+これは、スケッチで使用するMozziクラス、モジュール、テーブルのヘッダと同様に必ず必要です。
+今回は、オシレータと、オシレータが演奏するためのウェーブテーブルを用意することにします:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;MozziGuts.h&gt; // this makes everything work</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Oscil.h&gt;  // a template for an oscillator</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;tables/sin2048_int8.h&gt;  // a wavetable holding a sine wave</span><span style="color:#75715e">
+</span></span></span></code></pre></div><blockquote>
+<p>Next, instantiate the oscillator, using the Oscil class just included.
+Here is the structure and the parameters used to declare an <code>Oscil</code>.</p>
+</blockquote>
+<p>次に、先ほど含まれたOscilクラスを使用して、オシレータをインスタンス化します。
+ここでは、<code>Oscil</code> を宣言するために使用される構造とパラメータを示します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Oscil <span style="color:#f92672">&lt;</span>table_size, update_rate<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">name</span>(table_data);
+</span></span></code></pre></div><blockquote>
+<p>The oscillator needs to be instantiated using literal numeric values as template parameters (inside the &lt; &gt; brackets).
+This allows the compiler to do some calculations at compile time instead of slowing down execution by repeating the same operations over and over while the program runs.</p>
+</blockquote>
+<p>オシレータは、テンプレートパラメータとしてリテラルな数値を使用してインスタンス化する必要があります（&lt; &gt;括弧の中）。
+これにより、コンパイル時にいくつかの計算を行うことで、
+プログラムの実行中に同じ操作を何度も繰り返して実行速度を低下させることを防ぐことができます。</p>
+<blockquote>
+<p>The table used by an <code>Oscil</code> needs to be a power of two,
+typically at least 256 cells and preferably longer for lower aliasing noise.
+This Oscil will be operating as an audio generator, so the update rate will be <code>AUDIO_RATE</code>.
+The <code>table_data</code> is an array which you can find the name of in the table file included at the top of the sketch.
+If you look in Mozzi/tables/sin2048_int8.h, you’ll find <code>SIN2048_DATA</code>.</p>
+</blockquote>
+<p><code>Oscil</code> が使用するテーブルは2のべき乗である必要があり、通常少なくとも256セル以上は必要です。
+エイリアシングノイズを低くするためには、より長いことが望まれます。
+このOscilはオーディオジェネレータとして動作するので、更新レートは<code>AUDIO_RATE</code>になります。
+<code>table_data</code>は配列で、スケッチのトップに含まれるテーブルファイルの中にその名前があります。
+Mozzi/tables/sin2048_int8.hを見ると、<code>SIN2048_DATA</code> が見つかります。</p>
+<blockquote>
+<p>So, an audio sine tone oscillator for our sketch is created like this:</p>
+</blockquote>
+<p>つまり、このスケッチのオーディオ正弦波オシレータは、次のように作成されます:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Oscil <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2048</span>, AUDIO_RATE<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">aSin</span>(SIN2048_DATA);
+</span></span></code></pre></div><blockquote>
+<p>The <code>CONTROL_RATE</code> has a default value of 64, but you can change it if you want control updates to happen more frequently.
+Like the audio rate, it must be a literal number and power of two to allow Mozzi to optimise internal calculations for run-time speed.</p>
+</blockquote>
+<p><code>CONTROL_RATE</code> のデフォルト値は64ですが、コントロールの更新をより頻繁に行いたい場合は変更することができます。
+Mozziがランタイム速度のために内部計算を最適化できるように、オーディオレートと同様に、
+リテラル数かつ2のべき乗でなければなりません。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define CONTROL_RATE 128
+</span></span></span></code></pre></div><blockquote>
+<p>Now to the program functions. In Arduino’s setup() routine goes:</p>
+</blockquote>
+<p>さて、プログラムの機能です。
+Arduinoの<code>setup()</code> ルーチンでは、次のようになります:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">startMozzi</span>(CONTROL_RATE);
+</span></span></code></pre></div><blockquote>
+<p>This sets up one timer to call <code>updateControl()</code> at the rate chosen and another timer which works behind the scenes to send audio samples to the output pin at the fixed rate of 16384 Hz.</p>
+</blockquote>
+<p>これは、選択したレートで<code>updateControl()</code>を呼び出すタイマと、
+固定レートである16384Hzで出力ピンにオーディオサンプルを送るために裏で動作する別のタイマをセットアップします。</p>
+<blockquote>
+<p>The oscillator frequency can be set in a range of ways, but we’ll use an integer:</p>
+</blockquote>
+<p>オシレータの周波数は様々な方法で設定できますが、ここでは整数を使用することにします:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>aSin.<span style="color:#a6e22e">setFreq</span>(<span style="color:#ae81ff">440</span>);
+</span></span></code></pre></div><blockquote>
+<p>Now Arduino’s <code>setup()</code> function looks like this:</p>
+</blockquote>
+<p>この時点でのArduinoの <code>setup()</code> 関数はこのようになります:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">startMozzi</span>(CONTROL_RATE);
+</span></span><span style="display:flex;"><span>	aSin.<span style="color:#a6e22e">setFreq</span>(<span style="color:#ae81ff">440</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>The next parts of the sketch are <code>updateControl()</code> and <code>updateAudio()</code>, which are both required.
+In this example the frequency has already been set and the oscillator just needs to be run in <code>updateAudio()</code>,
+using the Oscil’s <code>next()</code> method which returns a signed 8 bit value from the oscillator’s wavetable.
+The int return value of <code>updateAudio()</code> must be in the range -244 to 243 in Mozzi’s default <code>STANDARD</code> audio mode.</p>
+</blockquote>
+<p>次のスケッチは <code>updateControl()</code> と <code>updateAudio()</code> の両方が必要です。
+このサンプルでは、周波数はすでに設定されているので、<code>updateAudio()</code> 内で Oscil の　<code>next()</code> メソッド実行するだけです。
+<code>next()</code> メソッドは、オシレータのウェーブテーブルから符号付き8ビット値を返します。
+<code>updateAudio()</code> の int型の戻り値は、Mozzi デフォルトの <code>STANDARD</code> オーディオモードでは -244 から 243 の範囲でなければなりません。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateControl</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// no controls being changed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">updateAudio</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> aSin.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Finally, <code>audioHook()</code> goes in Arduino’s <code>loop()</code>.</p>
+</blockquote>
+<p>最後に、 Arduino の <code>loop()</code>内で<code>audioHook()</code>を呼び出します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">audioHook</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>This is where the sound actually gets synthesised,
+running as fast as possible to fill the output buffer which gets steadily emptied at Mozzi’s audio rate. For this reason,
+it’s usually best to avoid placing any other code in <code>loop()</code>.</p>
+</blockquote>
+<p>ここでは実際に音が合成されて、空になっていく出力バッファを着実にMozziのオーディオレートで満たすために、可能な限り速く実行されます。
+このため、通常では<code>loop()</code>の中に他のコードを配置することは避けたほうがよいでしょう。</p>
+<blockquote>
+<p>It’s important to design a sketch with efficiency in mind in terms of what can be processed in
+<code>updateAudio()</code>, <code>updateControl()</code> and <code>setup()</code>.
+Keep <code>updateAudio()</code> lean, put slow changing values in <code>updateControl()</code>,
+and pre-calculate as much as possible in <code>setup()</code>.
+Control values which directly modify audio synthesis can be efficiently interpolated with a <code>Line</code> object in <code>updateAudio()</code> if necessary.</p>
+</blockquote>
+<p><code>updateAudio()</code> や <code>updateControl()</code>、<code>setup()</code>で行う処理は、効率を意識してスケッチを設計することが重要です。
+<code>updateAudio()</code> は無駄を省き、<code>updateControl()</code> には変化の遅い値を入れ、<code>setup()</code> では可能な限り事前計算をします。
+オーディオ合成を直接変更する制御値は、必要に応じて <code>updateAudio()</code> で <code>Line</code> オブジェクトを使用して効率的に補間することができます。</p>
+<blockquote>
+<p>Here’s the whole sketch:</p>
+</blockquote>
+<p>こちらがスケッチの全体像です:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;MozziGuts.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Oscil.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;tables/sin2048_int8.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define CONTROL_RATE 128
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Oscil <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2048</span>, AUDIO_RATE<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">aSin</span>(SIN2048_DATA);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>(){
+</span></span><span style="display:flex;"><span>	aSin.<span style="color:#a6e22e">setFreq</span>(<span style="color:#ae81ff">440</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">startMozzi</span>(CONTROL_RATE);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateControl</span>(){
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">updateAudio</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> aSin.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">audioHook</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Adding a control signal: vibratoPermalink</p>
+<p>Vibrato can be added to the sketch by periodically changing the frequency of the audio wave with a low frequency oscillator.
+The new oscillator can use the same wave table but this time it’s set up to update at control rate.
+The naming convention of using a prefix of <code>k</code> for control and a for audio rate units is <code>a</code> personal mnemonic,
+influenced by Csound.</p>
+</blockquote>
+<h2 id="シグナルの制御を追加する-ビブラート">シグナルの制御を追加する: ビブラート</h2>
+<p>低周波オシレータでオーディオ波の周波数を周期的に変化させることで、スケッチにビブラートを追加することができます。
+新しいオシレーターは、同じウェーブテーブルを使用できますが、今回はコントロールレートで更新するように設定されています。
+コントロール・レートの変数名に<code>k</code>、オーディオ・レートの変数名に<code>a</code>というプレフィックスを使う命名規則は、Csoundの影響を受けた個人的なニモニックです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Oscil <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2048</span>, CONTROL_RATE<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">kVib</span>(SIN2048_DATA);
+</span></span></code></pre></div><blockquote>
+<p>This time the frequency can be set with a floating point value:</p>
+</blockquote>
+<p>今回は周波数を浮動小数点値で設定することができます:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>kVib.<span style="color:#a6e22e">setFreq</span>(<span style="color:#ae81ff">6.5f</span>);
+</span></span></code></pre></div><blockquote>
+<p>Now, using variables for depth and centre frequency,
+the vibrato oscillator can modulate the frequency of the audio oscillator in <code>updateControl()</code>.
+<code>kVib.next()</code> returns a signed byte between -128 to 127 from the wave table,
+so depth has to be set proportionately.</p>
+</blockquote>
+<p>これで、深さと中心周波数の変数を使用して、ビブラート・オシレータは<code>updateControl()</code>でオーディオ・オシレータの周波数を変調することができます。
+<code>kVib.next()</code>は、ウェーブテーブルから-128〜127の符号付きバイトを返すので、深さはそれに比例して設定する必要があります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateControl</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">float</span> vibrato <span style="color:#f92672">=</span> depth <span style="color:#f92672">*</span> kVib.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>	aSin.<span style="color:#a6e22e">setFreq</span>(centre_freq<span style="color:#f92672">+</span>vibrato);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Here’s the modified sketch complete with vibrato:</p>
+</blockquote>
+<p>これが、ビブラートをかけた修正スケッチです:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;MozziGuts.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Oscil.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;tables/sin2048_int8.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define CONTROL_RATE 128
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Oscil <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2048</span>, AUDIO_RATE<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">aSin</span>(SIN2048_DATA);
+</span></span><span style="display:flex;"><span>Oscil <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2048</span>, CONTROL_RATE<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">kVib</span>(SIN2048_DATA);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> centre_freq <span style="color:#f92672">=</span> <span style="color:#ae81ff">440.0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> depth <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>(){
+</span></span><span style="display:flex;"><span>	kVib.<span style="color:#a6e22e">setFreq</span>(<span style="color:#ae81ff">6.5f</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">startMozzi</span>(CONTROL_RATE);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateControl</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">float</span> vibrato <span style="color:#f92672">=</span> depth <span style="color:#f92672">*</span> kVib.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>	aSin.<span style="color:#a6e22e">setFreq</span>(centre_freq<span style="color:#f92672">+</span>vibrato);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">updateAudio</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> aSin.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">audioHook</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>While this example uses floating point numbers,
+it is best to avoid their use for intensive audio code which needs to run fast, especially in <code>updateAudio()</code>.
+When the speed of integer maths is required along with fractional precision,
+it is better to use fixed point fractional arithmetic.
+Mozzi’s fixmath module has number types and conversion functions which assist in keeping track of precision through complex calculations.</p>
+</blockquote>
+<p>この例では浮動小数点数を使用していますが、特に<code>updateAudio()</code>のような集中的なオーディオ関係のコードは，
+高速に実行する必要があるので、浮動小数点数の使用は避けた方がよいでしょう。
+整数演算の速度と分数精度が必要な場合は、固定小数点分数演算を使用するのがよいでしょう。
+Mozziのfixmathモジュールには、複雑な計算で精度を維持するのに役立つ、数値型と変換関数があります。</p>
+<hr>
+<h1 id="まとめ">まとめ</h1>
+<blockquote>
+<p>コントロール・レートの変数名に<code>k</code>、オーディオ・レートの変数名に<code>a</code>というプレフィックスを使う命名規則は、
+Csoundの影響を受けた個人的なニモニックです。</p>
+</blockquote>
+<p>サンプルコードの命名規則が気になっていたので、説明があってスッキリしました。</p>
+<p>あとは、Mozziのfixmathモジュールとか、思った以上に役立つ情報がありました。</p>
+<blockquote>
+<p>高速に実行する必要があるので、浮動小数点数の使用は避けた方がよいでしょう。</p>
+</blockquote>
+<p>組み込みに慣れていないと、このへんとか意識することがないので勉強になりました。</p>
+<p>次は「ボンネットの中」を読んでいこうと思います。
+続きは<a href="../mozzi-doc03">こちら</a></p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Mozziのドキュメントを読みつつ翻訳する「Mozziスケッチの解剖学」</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-05-20
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

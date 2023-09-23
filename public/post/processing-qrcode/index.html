@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>ProcessingでQRコードを使う &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>ProcessingでQRコードを使う</h1>
+    </header>
+    
+    <div class="content__body">
+        <h1 id="はじめに">はじめに</h1>
+<p>ProcessingでQRコードを使う為のライブラリは有名なところだと、
+Daniel Shiffmanの<a href="https://shiffman.net/p5/qrcode-processing/" target="_blank">qrcode-processing</a>があります。
+ですが今回は<a href="https://github.com/enkatsu/ZXingP5" target="_blank">ZXingP5</a>という、Java製のQRコードライブラリ<a href="https://github.com/zxing/zxing" target="_blank">ZXing</a>のProcessingラッパーを使います。</p>
+<p>このライブラリの特徴はQRコードの左上、右上、左下にある四角形の座標が取得できることです。
+大まかなQRコードの位置と大きさ、角度を取得することができます。
+なので、このようにARマーカのようにQRコードを扱うことができます。
+実はこのライブラリは自分が作ったので、コメントやIssueをいただけたら、
+修正や改良をしたいと思います。</p>
+<p><img src="/images/processing-qrcode/zxingp5.png" alt="zxingp5"></p>
+<h1 id="インストール">インストール</h1>
+<p><a href="https://github.com/enkatsu/ZXingP5/archive/master.zip" target="_blank">ここ</a>からZipをダウンロードして、解凍したディレクトリをZXingP5にリネームして、<code>PROCESSING_PATH/library</code> に配置、
+もしくはターミナルで以下のコマンドを実行します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd PROCESSING_PATH/library
+</span></span><span style="display:flex;"><span>git clone https://github.com/enkatsu/ZXingP5.git
+</span></span></code></pre></div><h1 id="使い方">使い方</h1>
+<p>サンプルは3つ入っていて内容はこのようになっています。</p>
+<ul>
+<li>WriterSample: 文字列からQRコードのPImageを生成するサンプル</li>
+<li>ReaderSample: QRコードの映ったPImageから文字列を読み取るサンプル</li>
+<li>ReaderAdvancedSample: QRコードの映ったPImageから文字列と座標、大きさを読み取るサンプル</li>
+</ul>
+<p>2018年1月にmakezine.jpさんで取り上げていただきました</p>
+<p><a href="https://makezine.jp/blog/2018/01/p5qr.html" target="_blank">ProcessingでQRコードを読み書きする</a></p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>ProcessingでQRコードを使う</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2022-12-22
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macOS on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/macos/</link>
+    <description>Recent content in macOS on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 16 Aug 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>openFrameworksで開発したアプリを配布する際のTips: bin/dataを.appに含める方法</title>
+      <link>https://blog.enkatsu.org/post/release-of-app/</link>
+      <pubDate>Wed, 16 Aug 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/release-of-app/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

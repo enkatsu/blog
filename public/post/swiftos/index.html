@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>SwiftOSCをmacOSアプリ開発に使う方法 &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>SwiftOSCをmacOSアプリ開発に使う方法</h1>
+    </header>
+    
+    <div class="content__body">
+        <h1 id="swift-package-managerからインストールする方法">Swift Package Managerからインストールする方法</h1>
+<p>下記のPRが出ているが，まだマージされていないので</p>
+<p><a href="https://github.com/ExistentialAudio/SwiftOSC/pull/61" target="_blank">https://github.com/ExistentialAudio/SwiftOSC/pull/61</a></p>
+<p>下記のリポジトリとブランチを指定してインストールする</p>
+<p><a href="https://github.com/soundflix/SwiftOSC/tree/dev" target="_blank">https://github.com/soundflix/SwiftOSC/tree/dev</a></p>
+<h1 id="udpを使用する際のエラー対応">UDPを使用する際のエラー対応</h1>
+<p><code>App Sandbox</code> -&gt; <code>Network</code> -&gt; <code>Incomming Connections (Server)</code> と <code>Outgoing Connections (Client)</code> にチェックを入れる</p>
+<p><img src="/images/swiftosc/swiftosc.png" alt="swiftosc.png"></p>
+<ul>
+<li><a href="https://github.com/Kitura/BlueSocket/issues/103" target="_blank">https://github.com/Kitura/BlueSocket/issues/103</a></li>
+<li><a href="https://stackoverflow.com/questions/47797446/nsposixerrordomain-when-binding-to-socket-on-macos-10-12" target="_blank">https://stackoverflow.com/questions/47797446/nsposixerrordomain-when-binding-to-socket-on-macos-10-12</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>SwiftOSCをmacOSアプリ開発に使う方法</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2022-12-24
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

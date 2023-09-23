@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>ArduinoとWiiヌンチャクコントローラでマウスを作る &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>ArduinoとWiiヌンチャクコントローラでマウスを作る</h1>
+    </header>
+    
+    <div class="content__body">
+        <p><img src="/images/arduino-wii-nunchuck/arduino-wii-nunchuk.gif" alt="arduino-wii-nunchuk.gif"></p>
+<h1 id="目的">目的</h1>
+<p>Wiiヌンチャクコントローラでマウスを作る</p>
+<h1 id="材料">材料</h1>
+<ul>
+<li>Arduino Leonardo</li>
+<li>Wiiヌンチャクコントローラ</li>
+</ul>
+<h1 id="手順">手順</h1>
+<p><a href="https://www.google.co.jp/search?q=wii&#43;nunchuck&#43;arduino&amp;oq=wii&#43;nunchuck&#43;arduino&amp;aqs=chrome..69i57j69i60l3j0l2.2182j0j4&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank">「wii nunchuck arduino」</a>などで検索すると色々資料が出てくる。
+WiiヌンチャクコントローラはI2C通信を使用しているようなので、Wireライブラリを使用する。
+またArduinoによりマウス操作を行うため、Mouseライブラリを使用する。
+MouseライブラリはArduino LeonardoとArduino Microに対応しているので、今回はArduino Leonardoを使用した。
+Wiiヌンチャクコントローラの端子を切ってワイヤストリッパで剥くとこんな感じに赤、黒、緑、黄色の線が出てくる。
+これらを以下のように配線する。</p>
+<ul>
+<li>+(赤) -&gt; 3.3V</li>
+<li>-(黒) -&gt; GND</li>
+<li>SDA(緑) -&gt; D2</li>
+<li>SCL(黄色) -&gt; D3</li>
+</ul>
+<p><img src="/images/arduino-wii-nunchuck/1.jpg" alt="1.jpg">
+<img src="/images/arduino-wii-nunchuck/2.jpg" alt="2.jpg">
+<img src="/images/arduino-wii-nunchuck/3.jpg" alt="3.jpg"></p>
+<p>プログラムは以下のリポジトリから
+<a href="https://github.com/enkatsu/NunchuckMouse" target="_blank">enkatsu/NunchuckMouse</a></p>
+<h2 id="課題">課題</h2>
+<ul>
+<li>今のままではスクロールができないのでブラウザの操作が困難</li>
+<li>マウスのスピードを調整可能にする</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://github.com/todbot/wiichuck_adapter/tree/master/firmware/WiichuckDemo" target="_blank">todbot/wiichuck_adapter</a></li>
+<li><a href="http://cubic9.com/Devel/%C5%C5%BB%D2%B9%A9%BA%EE/Arduino/%A5%B2%A1%BC%A5%E0%A5%B3%A5%F3%A5%C8%A5%ED%A1%BC%A5%E9%A1%BC/" target="_blank">片手でゲームをしたい！</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>ArduinoとWiiヌンチャクコントローラでマウスを作る</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2022-12-25
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

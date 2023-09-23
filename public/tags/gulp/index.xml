@@ -9,25 +9,11 @@
     <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/gulp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</title>
-      <link>https://blog.enkatsu.org/posts/p5js-garally-template/</link>
+      <link>https://blog.enkatsu.org/post/p5js-garally-template/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.enkatsu.org/posts/p5js-garally-template/</guid>
-      <description>概要 Link to heading 前から、p5.jsのスケッチを溜めておくための、 HTML &amp;amp; JS テンプレートが欲しいと思っていたので作った。
-OpenProcessingを使えばいいとも思うけど、 OpenProcessingだとiframeを使っているからなのか、 うまく動かない場合があるし、セルフホスティングした方が使い勝手がいいことも多い。
-使い方 Link to heading https://github.com/enkatsu/p5js-garally-template
-上記のテンプレートリポジトリを使って、自分のリポジトリを作成する。 作ったリポジトリを、ローカルにクローンしてきたら、 下記のコマンドで依存パッケージをインストールする。
-npm i スケッチを追加する Link to heading 下記のコマンドで、新規のスケッチを追加できる。 ${SKETCH_TITLE} にはスケッチのタイトルを入力する。
-node commands.mjs sketch:add -t ${SKETCH_TITLE} 開発用サーバを起動 Link to heading 下記のコマンドで開発用サーバを起動できる。
-npm start http://localhost:3000
-を開くとスケッチの一覧を表示できる。
-ビルド Link to heading 下記のコマンドでビルド結果が ./docs に出力される。 gulpfile.mjs の distDirectory を変更すれば、出力先を変更できる。
-npm run build まとめ Link to heading 下記のURLが、実際にこのテンプレートを使ったリポジトリとWebページ。
-https://github.com/enkatsu/p5js-sketches
-https://enkatsu.github.io/p5js-sketches/
-今回はHTMLテンプレートエンジンにEJSを使った。 今の主流のテンプレートエンジンが何なのかわからないので、そのうち差し替えるかも。
-あとは，テーマを設定できるようにしたいなーとも思ってる。
-追記 Link to heading スケッチのサムネイルを設定できるようにした。</description>
+      <guid>https://blog.enkatsu.org/post/p5js-garally-template/</guid>
+      <description></description>
     </item>
     
   </channel>

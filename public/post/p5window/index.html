@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Processingでマルチウインドウとか &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Processingでマルチウインドウとか</h1>
+    </header>
+    
+    <div class="content__body">
+        <p><a href="https://github.com/enkatsu/P5WindowApp" target="_blank">ソースコード</a></p>
+<p>Processingでマルチウインドウとかウインドウ位置の取得とかを使った実験です。</p>
+<p>昔作ったんですけど、ウインドウなどのOSのUIを使ったインタラクションが面白いと思ったので改めてコードを書いてみました。</p>
+<!-- <video controls playsinline muted="true" width="100%" type="video/mp4">
+  <source src="/videos/p5window/WindowApp.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
+</video> -->
+<div style="padding:62.5% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/852428061?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Processing Multiple Window"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<!-- <video controls playsinline muted="true" width="100%" type="video/mp4">
+  <source src="/videos/p5window/WindowInvertLayerApp.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
+</video> -->
+<div style="padding:62.5% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/852429218?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Processing Multiple Window Invert"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<!-- <video controls playsinline muted="true" width="100%" type="video/mp4">
+  <source src="/videos/p5window/WindowLayerImageApp.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
+</video> -->
+<div style="padding:62.5% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/852429861?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Processing Multiple Window Image Mask"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<p>この動画はこちらのツイートをProcessingで模写したスケッチです。</p>
+<p><a href="https://twitter.com/shunsuke_kudo_/status/1687632477198921731?s=46&amp;t=7j17GvG2nSpm21lo6-_nLQ" target="_blank">https://twitter.com/shunsuke_kudo_/status/1687632477198921731?s=46&amp;t=7j17GvG2nSpm21lo6-_nLQ</a></p>
+<video controls playsinline muted="true" width="100%" type="video/mp4">
+  <source src="/videos/p5window/WindowResizeApp.mov">
+  </source>
+  Sorry, your browser doesn't support embedded videos.
+</video>
+<h1 id="参考文献">参考文献</h1>
+<ul>
+<li><a href="https://forum.processing.org/two/discussion/17270/why-this-getx-method-is-missing-in-processing-3-1-1.html#Item_5" target="_blank">https://forum.processing.org/two/discussion/17270/why-this-getx-method-is-missing-in-processing-3-1-1.html#Item_5</a></li>
+<li><a href="https://forum.processing.org/two/discussion/12272/multiple-windows-with-processing-3.html" target="_blank">https://forum.processing.org/two/discussion/12272/multiple-windows-with-processing-3.html</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Processingでマルチウインドウとかを使った習作</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-08-04
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Processing（Java）からRustの関数を呼び出す &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Processing（Java）からRustの関数を呼び出す</h1>
+    </header>
+    
+    <div class="content__body">
+        <p>サンプルコードのリポジトリはこちらです。</p>
+<p><a href="https://github.com/enkatsu/P5Rust" target="_blank">https://github.com/enkatsu/P5Rust</a></p>
+<h1 id="ざっくりした説明">ざっくりした説明</h1>
+<p>Rustの関数をJNAを使ってProcessingから呼び出す方法を試したので、
+あまり需要はないかもしれないけど一応書いておきます。</p>
+<p>ディレクトリ構成はこちらです。</p>
+<pre tabindex="0"><code>.
+├── P5Rust.pde
+├── RustInstance.pde
+└── rust
+    ├── Cargo.lock
+    ├── README.md
+    ├── cargo.toml
+    ├── src
+    │   └── lib.rs
+    └── target
+        ├── CACHEDIR.TAG
+        └── release
+            └── librs.dylib
+</code></pre><p><code>rustc</code> でビルドする例は多かったですが、
+今回は後々のことを考えてCargoを使っています。</p>
+<p>Processingのコードを実行する前に、
+プロジェクトルートで、以下のコマンドを実行することで、
+ネイティブライブラリをビルドしてください。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd rust
+</span></span><span style="display:flex;"><span>cargo build --release
+</span></span></code></pre></div><h2 id="rustによる関数実装">Rustによる関数実装</h2>
+<p>こちらがlib.rsの中身です。
+Processingから呼び出す関数を定義しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rs" data-lang="rs"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::os::raw::c_int;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::os::raw::c_float;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::slice::from_raw_parts_mut;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[no_mangle]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">hello</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[no_mangle]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add</span>(a: <span style="color:#a6e22e">c_int</span>, b: <span style="color:#a6e22e">c_int</span>) -&gt; <span style="color:#a6e22e">c_int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[no_mangle]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">sum</span>(vals: <span style="color:#f92672">*</span><span style="color:#66d9ef">mut</span> c_float, len: <span style="color:#a6e22e">c_int</span>) -&gt; <span style="color:#a6e22e">c_float</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> new_slice <span style="color:#f92672">=</span> <span style="color:#66d9ef">unsafe</span> { from_raw_parts_mut(vals, len <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>) };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> sum: <span style="color:#a6e22e">c_float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">..</span>len {
+</span></span><span style="display:flex;"><span>        sum <span style="color:#f92672">+=</span> new_slice[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sum;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="rustで実装した関数のインターフェース定義">Rustで実装した関数のインターフェース定義</h2>
+<p>こちらがRustInstance.pdeの中身です。
+Rustを読み込む処理と、インターフェース定義をしています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jna.Library<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jna.Native<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">RsInterface</span> <span style="color:#66d9ef">extends</span> Library <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RsInterface <span style="color:#a6e22e">buildRsInstance</span><span style="color:#f92672">(</span>String rsLibPath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  String absPath <span style="color:#f92672">=</span> sketchPath<span style="color:#f92672">()</span> <span style="color:#f92672">+</span> rsLibPath<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> Native<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span>absPath<span style="color:#f92672">,</span> RsInterface<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="実際に呼び出すコード">実際に呼び出すコード</h2>
+<p>こちらがP5Rust.pdeの中身です。
+Rustの関数呼び出しを行なっています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String RS_LIBRALY_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/rust/target/release/librs.dylib&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  RsInterface rsInstance <span style="color:#f92672">=</span> buildRsInstance<span style="color:#f92672">(</span>RS_LIBRALY_PATH<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  rsInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  println<span style="color:#f92672">(</span>rsInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> <span style="color:#ae81ff">200000</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> vals <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[</span>N<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> N<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    vals<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  println<span style="color:#f92672">(</span>rsInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span>vals<span style="color:#f92672">,</span> vals<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="感想">感想</h1>
+<p>正確には測定していないのでここでは言及しませんが、
+以下の点を踏まえればRustで実装した方が処理速度が向上する気がしました。</p>
+<ul>
+<li>計算量が多い</li>
+<li>複数回呼び出す必要がある
+<ul>
+<li>関数の初回実行に時間がかかっていそう</li>
+</ul>
+</li>
+</ul>
+<p>作品制作の際に必要になったら、詳しく調査しようと思います。</p>
+<h1 id="参考文献">参考文献</h1>
+<ul>
+<li><a href="https://qiita.com/tobita_yoshiki/items/74493400bbede2e5d436" target="_blank">https://qiita.com/tobita_yoshiki/items/74493400bbede2e5d436</a></li>
+<li><a href="https://zenn.dev/eduidl/articles/f2fd959f220393" target="_blank">https://zenn.dev/eduidl/articles/f2fd959f220393</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>ProcessingからRustの関数を呼び出す方法</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-07-22
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

@@ -1,7 +1,7 @@
 +++
 author = "Katsuya Endoh"
 title = "About"
-date = "2022-12-22"
+date = "2023-01-02"
 description = "about this site"
 tags = [
     "",

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Gradleを使ってProcessingライブラリを作る &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Gradleを使ってProcessingライブラリを作る</h1>
+    </header>
+    
+    <div class="content__body">
+        <p>Processingライブラリを作ろうとすると、
+パスの設定などめんどくさい作業が多いです。</p>
+<p>そこで、Gradleを使って簡単にライブラリを作れるテンプレートを作ったので紹介したいと思います。</p>
+<h1 id="準備">準備</h1>
+<p>まずはGradleをインストールしましょう。</p>
+<p>Macの場合、Homebrewが入っていれば <code>brew install gradle</code> でインストールできます。</p>
+<h1 id="processing-library-template-gradlehttpsgithubcomenkatsuprocessing-library-template-gradleを使ったライブラリの作り方"><a href="https://github.com/enkatsu/processing-library-template-gradle" target="_blank">processing-library-template-gradle</a>を使ったライブラリの作り方</h1>
+<p>ライブラリのテンプレートは<a href="https://github.com/enkatsu/processing-library-template-gradle" target="_blank">こちら</a>を使っていきます。</p>
+<p>今回はhelloP5Libというライブラリを作る想定で書いていきます。</p>
+<p>クラスはhello.p5.libパッケージのHelloクラスのみです。
+このライブラリの使い方はこんな感じです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.p5.lib.*<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>Hello hello<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    size<span style="color:#f92672">(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">300</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    hello <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Hello<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Taro&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    background<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    hello<span style="color:#f92672">.</span><span style="color:#a6e22e">draw</span><span style="color:#f92672">(</span><span style="color:#ae81ff">100</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="/images/p5library-gradle-template/p5library-gradle-template.png" alt="p5library-gradle-template.png"></p>
+<h1 id="使い方">使い方</h1>
+<p>GitHubのprocessing-library-template-gradleのページから、 <code>Use this template</code> を選択して、テンプレートを使用したリポジトリを作成して、ローカルにクローンしてきます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/enkatsu/<span style="color:#e6db74">${</span>YOUR_REPOSITORY<span style="color:#e6db74">}</span>.git
+</span></span></code></pre></div><p>この時のディレクトリ構造はこんな感じです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── LICENSE
+</span></span><span style="display:flex;"><span>├── README.md
+</span></span><span style="display:flex;"><span>├── build.gradle
+</span></span><span style="display:flex;"><span>├── examples <span style="color:#75715e"># ライブラリのサンプルスケッチ</span>
+</span></span><span style="display:flex;"><span>│   └── HelloLibrary
+</span></span><span style="display:flex;"><span>│       └── HelloLibrary.pde
+</span></span><span style="display:flex;"><span>├── gradlew
+</span></span><span style="display:flex;"><span>├── gradlew.bat
+</span></span><span style="display:flex;"><span>├── settings.gradle
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    └── main
+</span></span><span style="display:flex;"><span>        └── java <span style="color:#75715e"># 実際にライブラリのソースコードを書くところ</span>
+</span></span><span style="display:flex;"><span>            └── processing
+</span></span><span style="display:flex;"><span>                └── library
+</span></span><span style="display:flex;"><span>                    └── template
+</span></span><span style="display:flex;"><span>                        └── Sample.java
+</span></span></code></pre></div><h1 id="ビルドの設定">ビルドの設定</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-settings.gradle" data-lang="settings.gradle"><span style="display:flex;"><span>rootProject<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;helloP5Lib&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-build.gradle" data-lang="build.gradle"><span style="display:flex;"><span>group <span style="color:#e6db74">&#39;helloP5Lib&#39;</span>
+</span></span></code></pre></div><h1 id="ライブラリの実装">ライブラリの実装</h1>
+<p>次に <code>src/main/java</code> 以下を編集してライブラリの中身を書いていきます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf src/main/java/processing
+</span></span><span style="display:flex;"><span>mkdir -p src/main/java/hello/p5/lib
+</span></span><span style="display:flex;"><span>touch src/main/java/hello/p5/lib/Hello.java
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Hello.java" data-lang="Hello.java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.p5.lib<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> processing.core.*<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Hello</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    PApplet app<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    String name<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Hello</span><span style="color:#f92672">(</span>PApplet app<span style="color:#f92672">,</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> app<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> x<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> y<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        app<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">,</span> x<span style="color:#f92672">,</span> y<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="ライブラリのビルド">ライブラリのビルド</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gradle -q
+</span></span><span style="display:flex;"><span>gradle javadoc
+</span></span></code></pre></div><p>この時点でのディレクトリ構造はこんな感じです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── LICENSE
+</span></span><span style="display:flex;"><span>├── README.md
+</span></span><span style="display:flex;"><span>├── build.gradle
+</span></span><span style="display:flex;"><span>├── examples
+</span></span><span style="display:flex;"><span>│   └── HelloLibrary
+</span></span><span style="display:flex;"><span>│       └── HelloLibrary.pde
+</span></span><span style="display:flex;"><span>├── gradlew
+</span></span><span style="display:flex;"><span>├── gradlew.bat
+</span></span><span style="display:flex;"><span>├── library <span style="color:#75715e"># ビルドされたライブラリ</span>
+</span></span><span style="display:flex;"><span>│   ├── classes
+</span></span><span style="display:flex;"><span>│   │   └── java
+</span></span><span style="display:flex;"><span>│   │       └── main
+</span></span><span style="display:flex;"><span>│   │           └── hello
+</span></span><span style="display:flex;"><span>│   │               └── p5
+</span></span><span style="display:flex;"><span>│   │                   └── lib
+</span></span><span style="display:flex;"><span>│   │                       └── Hello.class
+</span></span><span style="display:flex;"><span>│   ├── processingLibraryTemplate.jar
+</span></span><span style="display:flex;"><span>│   └── tmp
+</span></span><span style="display:flex;"><span>│       ├── compileJava
+</span></span><span style="display:flex;"><span>│       ├── jar
+</span></span><span style="display:flex;"><span>│       │   └── MANIFEST.MF
+</span></span><span style="display:flex;"><span>│       └── javadoc
+</span></span><span style="display:flex;"><span>│           └── javadoc.options
+</span></span><span style="display:flex;"><span>├── reference <span style="color:#75715e"># 出力されたリファレンス</span>
+</span></span><span style="display:flex;"><span>│   └── javadoc
+</span></span><span style="display:flex;"><span>├── settings.gradle
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    └── main
+</span></span><span style="display:flex;"><span>        └── java
+</span></span><span style="display:flex;"><span>            └── hello
+</span></span><span style="display:flex;"><span>                └── p5
+</span></span><span style="display:flex;"><span>                    └── lib
+</span></span><span style="display:flex;"><span>                        └── Hello.java
+</span></span></code></pre></div><h1 id="processingにインストールして使う">Processingにインストールして使う</h1>
+<p>helloP5Libディレクトリを <code>processing/libraries</code> 以下にコピーしたら完了です。
+Processingを再起動して <code>Sketch &gt; Import library</code> に表示されるか確認してみましょう。
+<code>helloP5Lib</code> と表示されていたらオリジナルライブラリの完成です。</p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Gradleを使ってProcessingライブラリを作る</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2022-12-23
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

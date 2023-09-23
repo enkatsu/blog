@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GHPython on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/ghpython/</link>
+    <description>Recent content in GHPython on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/ghpython/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GrasshopperのGHPythonで文字列の曲線を生成する</title>
+      <link>https://blog.enkatsu.org/post/rhino-gh-text/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/rhino-gh-text/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

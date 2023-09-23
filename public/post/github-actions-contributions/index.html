@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>contributions（草）を可視化する &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>contributions（草）を可視化する</h1>
+    </header>
+    
+    <div class="content__body">
+        <h1 id="ざっくり解説">ざっくり解説</h1>
+<p>GitHubのcontributions（いわゆる草）は、GitHub APIを使って取得できます。<br>
+ですが、GitHub APIを使うにはAPIトークンが必要です。<br>
+自分は今回、p5.jsを使ってcontributionsを可視化したかったので、
+フロントにAPIトークンを記載することには抵抗がありました。<br>
+しかし、サーバサイドを用意するのもコストがかかります。<br>
+そこで、GitHub Actionsを使って、定期的にcontributionsをJSON形式でGitHub Pagesで公開することにしました。</p>
+<p>こちらがリポジトリです。</p>
+<p><a href="https://github.com/enkatsu/my-data" target="_blank">https://github.com/enkatsu/my-data</a></p>
+<p>GitHub Actionsの流れは以下のようになっています。</p>
+<ol>
+<li>定期的にGitHub Actionsが実行される</li>
+<li>PythonでGitHub APIを叩いてJSONファイルを保存する</li>
+<li>gh-pagesブランチにコミットする</li>
+<li>GitHub Pagesをデプロイする</li>
+</ol>
+<p>一日に一回、上記の処理が実行されて、以下のJSONが更新されます。</p>
+<p><a href="https://enkatsu.github.io/my-data/contributions.json" target="_blank">https://enkatsu.github.io/my-data/contributions.json</a></p>
+<h1 id="詳細">詳細</h1>
+<h2 id="pythonを使ったcontributionsの取得">Pythonを使ったcontributionsの取得</h2>
+<p>下記のスクリプトでcontributionsを取得して、<code>data/contributions.json</code> に保存しています。<br>
+GraphQLライブラリは、<a href="https://github.com/graphql-python/gql" target="_blank">gql</a>を使用しています。<br>
+また、ユーザ名は第一引数、認証用のトークンは実行時の第二引数から渡して使用しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gql <span style="color:#f92672">import</span> gql, Client
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gql.transport.aiohttp <span style="color:#f92672">import</span> AIOHTTPTransport
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(args) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    token <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>    headers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Authorization&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Bearer </span><span style="color:#e6db74">{</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    transport <span style="color:#f92672">=</span> AIOHTTPTransport(url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://api.github.com/graphql&#39;</span>, headers<span style="color:#f92672">=</span>headers)
+</span></span><span style="display:flex;"><span>    client <span style="color:#f92672">=</span> Client(transport<span style="color:#f92672">=</span>transport)
+</span></span><span style="display:flex;"><span>    query <span style="color:#f92672">=</span> gql(<span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    query {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      user(login: &#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;){
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        contributionsCollection {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          contributionCalendar {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            totalContributions
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            weeks {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              contributionDays {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                contributionCount
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                date
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                color
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#39;&#39;&#39;</span> <span style="color:#f92672">%</span> user)
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>execute(query)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;data/contributions.json&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        json<span style="color:#f92672">.</span>dump(result, f, indent<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><h2 id="github-actionsの設定">GitHub Actionsの設定</h2>
+<p>ワークフローのYAMLは以下のようになっています。<br>
+基本的には参考文献のものと同じですが、
+Pythonの実行時に <code>${{ secrets.GH_USER }}</code> と <code>${{ secrets.GITHUB_TOKEN }}</code> を
+引数として渡しています。<br>
+<code>${{ secrets.GITHUB_TOKEN }}</code> は実行時にデフォルトで設定されますが、
+<code>${{ secrets.GH_USER }}</code> は
+<code>https://github.com/${username}/${reponame}/settings/secrets/actions</code>
+から Repository secrets に <code>GH_USER</code> として追加する必要があります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">schedule</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">cron</span>: <span style="color:#e6db74">&#39;0 0 * * *&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up Python 3.11</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-python@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">python-version</span>: <span style="color:#ae81ff">3.11</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install dependencies</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        python -m pip install --upgrade pip
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pip install -r requirements.txt</span>        
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run script</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        </span>        <span style="color:#ae81ff">python main.py ${{ secrets.GH_USER }} ${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">github_token</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./data</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">gh-pages</span>
+</span></span></code></pre></div><h2 id="可視化する">可視化する</h2>
+<p>あとはp5.jsからAPIを叩いて可視化するだけです。<br>
+こちらはシンプルな折れ線グラフです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">totalContributions</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">contributions</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createCanvas</span>(<span style="color:#ae81ff">640</span>, <span style="color:#ae81ff">480</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://enkatsu.github.io/my-data/contributions.json&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">loadJSON</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">res</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">totalContributions</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">contributionsCollection</span>.<span style="color:#a6e22e">contributionCalendar</span>.<span style="color:#a6e22e">totalContributions</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">contributions</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">contributionsCollection</span>.<span style="color:#a6e22e">contributionCalendar</span>.<span style="color:#a6e22e">weeks</span>
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">week</span> =&gt; <span style="color:#a6e22e">week</span>.<span style="color:#a6e22e">contributionDays</span>)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">flat</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">draw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">background</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">noFill</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">beginShape</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contributions</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">contribution</span>, <span style="color:#a6e22e">index</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">index</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">contributions</span>.<span style="color:#a6e22e">length</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">width</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">contribution</span>.<span style="color:#a6e22e">contributionCount</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalContributions</span>, <span style="color:#a6e22e">height</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">vertex</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">endShape</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="参考文献">参考文献</h1>
+<ul>
+<li><a href="https://zenn.dev/yuichkun/articles/b207651f5654b0" target="_blank">https://zenn.dev/yuichkun/articles/b207651f5654b0</a></li>
+<li><a href="https://qiita.com/Kanahiro/items/e7021b05199ae52e818b" target="_blank">https://qiita.com/Kanahiro/items/e7021b05199ae52e818b</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>GitHub ActionsとGitHub APIを使ってcontributionsをJSONで公開する</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-09-24
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

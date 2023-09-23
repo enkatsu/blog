@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</h1>
+    </header>
+    
+    <div class="content__body">
+        <h1 id="概要">概要</h1>
+<p>前から、p5.jsのスケッチを溜めておくための、
+HTML &amp; JS テンプレートが欲しいと思っていたので作った。</p>
+<p><a href="https://openprocessing.org/" target="_blank">OpenProcessing</a>を使えばいいとも思うけど、
+OpenProcessingだとiframeを使っているからなのか、
+うまく動かない場合があるし、セルフホスティングした方が使い勝手がいいことも多い。</p>
+<h1 id="使い方">使い方</h1>
+<p><a href="https://github.com/enkatsu/p5js-garally-template" target="_blank">https://github.com/enkatsu/p5js-garally-template</a></p>
+<p>上記のテンプレートリポジトリを使って、自分のリポジトリを作成する。
+作ったリポジトリを、ローカルにクローンしてきたら、
+下記のコマンドで依存パッケージをインストールする。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm i
+</span></span></code></pre></div><h2 id="スケッチを追加する">スケッチを追加する</h2>
+<p>下記のコマンドで、新規のスケッチを追加できる。
+<code>${SKETCH_TITLE}</code> にはスケッチのタイトルを入力する。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node commands.mjs sketch:add -t <span style="color:#e6db74">${</span>SKETCH_TITLE<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h2 id="開発用サーバを起動">開発用サーバを起動</h2>
+<p>下記のコマンドで開発用サーバを起動できる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm start
+</span></span></code></pre></div><p><a href="http://localhost:3000" target="_blank">http://localhost:3000</a></p>
+<p>を開くとスケッチの一覧を表示できる。</p>
+<h2 id="ビルド">ビルド</h2>
+<p>下記のコマンドでビルド結果が <code>./docs</code> に出力される。
+<code>gulpfile.mjs</code> の <code>distDirectory</code> を変更すれば、出力先を変更できる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm run build
+</span></span></code></pre></div><h2 id="まとめ">まとめ</h2>
+<p>下記のURLが、実際にこのテンプレートを使ったリポジトリとWebページ。</p>
+<p><a href="https://github.com/enkatsu/p5js-sketches" target="_blank">https://github.com/enkatsu/p5js-sketches</a></p>
+<p><a href="https://enkatsu.github.io/p5js-sketches/" target="_blank">https://enkatsu.github.io/p5js-sketches/</a></p>
+<p>今回はHTMLテンプレートエンジンにEJSを使った。
+今の主流のテンプレートエンジンが何なのかわからないので、そのうち差し替えるかも。</p>
+<p>あとは，テーマを設定できるようにしたいなーとも思ってる。</p>
+<h2 id="追記">追記</h2>
+<p>スケッチのサムネイルを設定できるようにした。</p>
+<p>スケッチのディレクトリに <code>thumbnail.png</code> が存在していたら、
+スケッチ一覧画面に表示されるようにした。
+存在していない場合は、No Image用の画像が表示される。</p>
+<h3 id="テンプレートの更新を取り込む方法">テンプレートの更新を取り込む方法</h3>
+<p>以下の手順でテンプレートの変更を取り込める。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add template git@github.enkatsu:enkatsu/p5js-garally-template.git
+</span></span><span style="display:flex;"><span>git fetch --all
+</span></span><span style="display:flex;"><span>git merge template/main --allow-unrelated-histories
+</span></span></code></pre></div>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-01-02
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Mozziのドキュメントを読みつつ翻訳する「Mozziについて」 &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Mozziのドキュメントを読みつつ翻訳する「Mozziについて」</h1>
+    </header>
+    
+    <div class="content__body">
+        <p><a href="https://sensorium.github.io/Mozzi/" target="_blank">Mozzi</a>は、
+サウンドアートなどのプロジェクトで頻繁に使われるArduinoライブラリです。</p>
+<p>しかし、Hello, world! 的な日本語の資料と、
+シンセサイザーを作成するような応用的な日本語の資料はそれなりに多いのですが、
+Mozziの仕様や詳しい使い方などを紹介した資料は意外と多くありません。
+なので、サウンドプログラミングの勉強を兼ねて、翻訳しつつ読んでいこうと思います。</p>
+<p>この記事を読む方は、自分がサウンドプログラミングの経験は少ない点と、
+翻訳ツールを多分に使っているという点は考慮してください。</p>
+<p>以下、自分が必要だと思った点の日本語訳です。</p>
+<hr>
+<h1 id="mozziについてhttpssensoriumgithubiomozzi"><a href="https://sensorium.github.io/Mozzi/" target="_blank">Mozziについて</a></h1>
+<blockquote>
+<p>Currently your Arduino can only beep like a microwave oven. Mozzi brings your Arduino to life by allowing it to produce much more complex and interesting growls, sweeps and chorusing atmospherics. These sounds can be quickly and easily constructed from familiar synthesis units like oscillators, delays, filters and envelopes.</p>
+<p>You can use Mozzi to generate algorithmic music for an installation or performance, or make interactive sonifications of sensors, on a small, modular and super cheap Arduino, without the need for additional shields, message passing or external synths.</p>
+</blockquote>
+<p>現在、あなたのArduinoは電子レンジのようなビープ音しか出せません。
+MozziはArduinoに命を吹き込み、より複雑で興味深いグロウルやスイープ音、
+コーラス的な雰囲気を作り出すことを可能にします。
+これらのサウンドは、オシレータ、ディレイ、フィルタ、
+エンベロープなどのおなじみの合成ユニットから素早く簡単に構築することができます。</p>
+<p>Mozziを使って、インスタレーションやパフォーマンスのためのアルゴリズミックな音楽を生成したり、
+センサーを使ったインタラクティブなソニフィケーションを、小型でモジュール式の超安価なArduinoで、
+追加のシールドやメッセージパッシング、外部シンセを必要とせずに作成することができます。</p>
+<h2 id="メモ">メモ</h2>
+<ul>
+<li>ソニフィケーション: <a href="https://artscape.jp/artword/index.php/%E3%82%BD%E3%83%8B%E3%83%95%E3%82%A3%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" target="_blank">https://artscape.jp/artword/index.php/%E3%82%BD%E3%83%8B%E3%83%95%E3%82%A3%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
+</ul>
+<hr>
+<h1 id="学ぶhttpssensoriumgithubiomozzilearn"><a href="https://sensorium.github.io/Mozzi/learn/" target="_blank">学ぶ</a></h1>
+<blockquote>
+<p><a href="https://sensorium.github.io/Mozzi/learn/introductory-tutorial/" target="_blank">Mozzi, an Introductory Tutorial</a></p>
+<p>This shows how to set up an Arduino with Mozzi from scratch and use analog inputs to make sounds using a knob, light sensing, pressure, and a switch (on a digital input).</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/a-simple-sketch/" target="_blank">Anatomy of a Mozzi sketch</a></p>
+<p>A detailed introduction to the parts of a Mozzi sketch, showing how to use an oscillator to generate audio and control signals.</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/under-the-hood/" target="_blank">Under the Hood</a></p>
+<p>Outlines how Mozzi works behind the scenes.</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/output/" target="_blank">Output Circuits</a></p>
+<p>Shows how to connect Mozzi for audio output, including a schematic for HIFI mode using only 3 components, and a filter for reducing carrier frequency noise which some people can hear in STANDARD mode.</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/hints/" target="_blank">Hints and Tips</a></p>
+<p>What kind of code Mozzi likes best, debugging and monitoring your sketches.</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/faq/" target="_blank">Frequently Asked Questions</a></p>
+</blockquote>
+<p><a href="https://sensorium.github.io/Mozzi/learn/introductory-tutorial/" target="_blank">チュートリアル</a></p>
+<p>ArduinoにMozziをゼロからセットアップし、アナログ入力でノブ、光センシング、圧力、スイッチ（デジタル入力）を使って音を出す方法を紹介しています。</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/a-simple-sketch/" target="_blank">Mozziスケッチの解剖学</a></p>
+<p>オシレータを使ったオーディオ信号の生成と信号の制御方法を見ていき、
+Mozziスケッチの各パーツを詳しく紹介します。</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/under-the-hood/" target="_blank">ボンネットの中</a></p>
+<p>Mozziが舞台裏でどのように動作しているかを概説します。</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/output/" target="_blank">出力回路</a></p>
+<p>Mozziをオーディオ出力に接続する方法を見ていきます。
+ここでは、わずか3つの部品でHIFIモードを実現する回路図や、
+STANDARDモードで一部の人に聞こえるキャリア周波数ノイズを
+低減するフィルターなどを紹介します。</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/hints/" target="_blank">ヒントとTips</a></p>
+<p>Mozziはどのようなコードを好むのか、スケッチのデバッグやモニタリングについてご紹介します。</p>
+<p><a href="https://sensorium.github.io/Mozzi/learn/faq/" target="_blank">よくある質問</a></p>
+<h2 id="メモ-1">メモ</h2>
+<ul>
+<li>システムの内部を「Under the Hood（ボンネットの中）」って表現するのがかっこいい</li>
+<li>ちなみに「Mozziスケッチの解剖学」と「ボンネットの中」を読むことがこの記事を書くモチベーションになってます</li>
+</ul>
+<hr>
+<h1 id="まとめ">まとめ</h1>
+<p>Mozziの記事は自作シンセの話が多いですが、
+トップページではMozziをアート領域で使う意気込みが見れてよかったです。
+「Mozziスケッチの解剖学」とか「ボンネットの中」とか、
+章タイトルがいちいちかっこいいのもいいですね。</p>
+<p>次は「Mozziスケッチの解剖学」を読んでいこうと思います。
+続きは<a href="../mozzi-doc02">こちら</a></p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Mozziのドキュメントを読みつつ翻訳する「Mozziについて」</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-05-19
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

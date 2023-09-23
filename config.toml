@@ -1,0 +1,70 @@
+baseURL = 'https://blog.enkatsu.org'
+languageCode = 'ja'
+defaultContentLanguage = "jp"
+title = 'enkatsu log'
+theme = 'risotto'
+timeZone='Asia/Tokyo'
+googleAnalytics = 'G-HHM2CFFG9S'
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+[params]
+author = "Katsuya Endoh"
+description = "Katsuya Endoh's personal website"
+keywords = "blog,developer,personal"
+dateFormat = '2006年01月02日'
+colorScheme = 'dark'
+hideColorSchemeToggle = true
+[[params.social]]
+name = "Portfolio"
+icon = "fa fa-2x fa-globe"
+weight = 1
+url = "https://enkatsu.org/"
+target="_blank"
+[[params.social]]
+name = "Github"
+icon = "fa fa-2x fa-github"
+weight = 2
+url = "https://github.com/enkatsu/"
+target="_blank"
+[[params.social]]
+name = "Twitter"
+icon = "fa fa-2x fa-twitter"
+weight = 2
+url = "https://twitter.com/KatsuyaEndoh"
+target="_blank"
+[[params.social]]
+name = "Instagram"
+icon = "fa fa-2x fa-instagram"
+weight = 2
+url = "https://www.instagram.com/katsuya.endoh/"
+target="_blank"
+# [[languages.jp.menu.main]]
+# name = 'About'
+# weight = 1
+# url = 'about/'
+# [[languages.jp.menu.main]]
+# name = 'Blog'
+# weight = 2
+# url = 'posts/'
+# [[languages.jp.menu.main]]
+# name = 'Tags'
+# weight = 3
+# url = 'tags/'
+[menu]
+    [[menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 1
+    [[menu.main]]
+        identifier = "post"
+        name = "Post"
+        url = "/post/"
+        weight = 2
+    [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 3

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Mozziのドキュメントを読みつつ翻訳する「ボンネットの中」 &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Mozziのドキュメントを読みつつ翻訳する「ボンネットの中」</h1>
+    </header>
+    
+    <div class="content__body">
+        <p>前回は<a href="../mozzi-doc02">こちら</a></p>
+<h1 id="ボンネットの中httpssensoriumgithubiomozzilearnunder-the-hood"><a href="https://sensorium.github.io/Mozzi/learn/under-the-hood/" target="_blank">ボンネットの中</a></h1>
+<blockquote>
+<p>The interface between Mozzi and the Arduino environment consists of four main functions.
+These are <code>startMozzi()</code>, <code>updateAudio()</code>, <code>updateControl()</code> and <code>audioHook()</code>, visible in the “User space” section in the figure below.
+All four are required for a Mozzi sketch to compile.</p>
+</blockquote>
+<p>MozziとArduino環境とのインターフェースは、4つの主要な関数で構成されています。
+下図の &ldquo;User space &ldquo;セクションにある<code>startMozzi()</code>, <code>updateAudio()</code>, <code>updateControl()</code>, <code>audioHook()</code>です。
+Mozziスケッチがコンパイルされるためには、この4つすべてが必要です。</p>
+<p><img src="/images/mozzi-doc03/Mozzi-system.jpg" alt="Mozzi-system.jpg"></p>
+<blockquote>
+<p><code>startMozzi(control_rate)</code> goes in Arduino’s <code>setup()</code>.
+It starts a timer which regularly sends audio out from the audio output buffer,
+and calls <code>updateControl()</code> at the requested control rate given in Hz as a parameter,
+or defaulting to 64 Hz without a parameter.</p>
+</blockquote>
+<p><code>startMozzi(control_rate)</code>は、Arduinoの<code>setup()</code>の中にあります。
+これは、定期的にオーディオ出力バッファからオーディオを送信するタイマーを開始し、
+パラメータとしてHzで与えられた要求された制御レートで<code>updateControl()</code>を呼び出すか、
+パラメータなしで64Hzをデフォルトとします。</p>
+<blockquote>
+<p><code>updateControl()</code> is where any analog or digital input sensing code should be placed and relatively slow changes such as LFO’s or frequency changes can be performed.</p>
+</blockquote>
+<p><code>updateControl()</code>は、アナログやデジタル入力のセンシングコードを配置し、
+LFOや周波数の変更など、比較的遅い変化を実行する場所です。</p>
+<blockquote>
+<p><code>updateAudio()</code> is where audio synthesis code should be placed.
+This runs on average 16384 times per second, so code here needs to be lean.
+The only other strict requirement is that it returns an integer between -244 and 243 inclusive in <code>STANDARD</code> mode or -8192 to 8191 in HIFI mode.</p>
+</blockquote>
+<p><code>updateAudio()</code>は、音声合成のコードを配置する場所です。
+これは1秒間に平均16384回実行されるので、ここのコードは無駄のないものにする必要があります。
+その他の厳しい要件は、<code>STANDARD</code>モードでは-244〜243、HIFIモードでは-8192〜8191の整数を返すことくらいです。</p>
+<blockquote>
+<p><code>audioHook()</code> goes in Arduino’s <code>loop()</code>.
+It wraps <code>updateAudio()</code> and takes care of filling the output buffer, hiding the details of this from user space.</p>
+</blockquote>
+<p><code>audioHook()</code>は、Arduinoの<code>loop()</code>内に配置します。
+これにより<code>updateAudio()</code>をラップして、出力バッファを満たすことを引き受けることで、
+ユーザ空間から複雑な処理を隠蔽します。</p>
+<blockquote>
+<p>Mozzi uses hardware interrupts on the processor which automatically call interrupt service routines (ISR) at regular intervals.
+<code>startMozzi()</code> sets up an interrupt for audio output at a sample rate of 16384 Hz.
+A counter in the audio output routine is used to call <code>updateControl</code>. In earlier versions,
+a separate interrupt on Timer 0 was used for control.</p>
+</blockquote>
+<p>Mozziは、一定間隔で自動的に割り込みサービスルーチン（ISR）を呼び出すプロセッサのハードウェア割り込みを使用します。
+<code>startMozzi()</code>は、サンプルレート16384Hzのオーディオ出力のための割り込みを設定します。
+オーディオ出力ルーチンのカウンタは、<code>updateControl</code>を呼び出すために使用されます。
+以前のバージョンでは、タイマー0の別の割り込みが制御に使用されていました。</p>
+<blockquote>
+<p>In <code>STANDARD_PLUS</code> (and old <code>STANDARD</code>) mode, the 16 bit Timer 1 is used by Mozzi on the ATmega processors for audio and control.</p>
+</blockquote>
+<p><code>STANDARD_PLUS</code>（および旧<code>STANDARD</code>）モードでは、ATmegaプロセッサのMozziによって、
+16ビットタイマー1がオーディオとコントロールのために使用されます。</p>
+<blockquote>
+<p><code>HIFI</code> mode additionally employs Timer 2 with Timer 1 for audio.</p>
+</blockquote>
+<p><code>HIFI</code>モードではさらに、オーディオ用として、タイマー1とタイマー2を併用します。</p>
+<blockquote>
+<p>The output buffer has 256 cells which equates to a maximum latency of about 15 milliseconds,
+to give leeway for control operations without interrupting audio output.
+The buffer is emptied behind the scenes by the regular 16384 Hz audio interrupt.</p>
+</blockquote>
+<p>出力バッファは256セルで、最大レイテンシは約15ミリ秒に相当し、オーディオ出力を中断することなく制御操作のための余裕を持たせています。
+バッファは、通常の16384Hzのオーディオ割り込みによって裏側で空にされます。</p>
+<h1 id="まとめ">まとめ</h1>
+<p>Mozziの最大サンプルレートは16384Hzなので、出力できる音は8192Hzまでになります。
+なので、超音波を使った実験的な作品を制作する場合は、他の方法を考えたほうがいいかもしれません。</p>
+<p>また、Mozzi自体がタイマを使用するようなので、
+タイマを使うようなコードを書く際は注意が必要です。</p>
+<h2 id="追記">追記</h2>
+<p><a href="https://sensorium.github.io/Mozzi/#features" target="_blank">こちら</a>の情報によれば、
+実験的な機能として最大サンプルレートを32768Hzにできるようです。
+また、 <a href="https://github.com/sensorium/Mozzi/blob/master/mozzi_config.h#L65" target="_blank">mozzi_config.h</a>
+を読んでみたところ、
+Teensy3/3.1などのハイパフォーマンスなCPUでは、
+最大サンプルレートを65536Hzとして動かせそうな記述があったので、
+こちらを使用すれば32768Hzまで出力できるかもしれません。</p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Mozziのドキュメントを読みつつ翻訳する「ボンネットの中」</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-05-21
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

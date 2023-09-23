@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/python/</link>
+    <description>Recent content in Python on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>contributions（草）を可視化する</title>
+      <link>https://blog.enkatsu.org/post/github-actions-contributions/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/github-actions-contributions/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

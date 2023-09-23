@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>p5.jsとArduinoを接続する &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>p5.jsとArduinoを接続する</h1>
+    </header>
+    
+    <div class="content__body">
+        <h1 id="接続方法の比較">接続方法の比較</h1>
+<h2 id="p5-serialp5serialserver--p5serialporthttpsgithubcomp5-serial"><a href="https://github.com/p5-serial" target="_blank">p5-serial(p5.serialserver &#43; p5.serialport)</a></h2>
+<ul>
+<li>ITP Camp2016でスタートしているプロジェクト
+<ul>
+<li>2019 Google Summer of Codeを獲得</li>
+<li>2022 Processing Fellowshipを獲得</li>
+</ul>
+</li>
+<li>Web socketを使用
+<ul>
+<li>様々なブラウザで動作する</li>
+<li>Webソケットサーバ（p5.serialserver）が必要
+<ul>
+<li>WebソケットサーバはNode.js実装とProcessing実装が用意されている
+<ul>
+<li>Processing実装は動かなかった（Processing4.0.1）
+<ul>
+<li>4.1.1では動作した（https://github.com/processing/processing4/pull/577）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="p5web-serialhttpsgithubcomgohaip5webserial"><a href="https://github.com/gohai/p5.webserial" target="_blank">p5.web-serial</a></h2>
+<ul>
+<li>Web Serial APIを使用
+<ul>
+<li>ChromeとEdgeのみで動作
+<ul>
+<li>スマートフォンから使うにはBTなどを使う必要がある？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="p5-serialの環境構築">p5-serialの環境構築</h1>
+<h2 id="検証環境">検証環境</h2>
+<ul>
+<li>Node.js: v14.18.1</li>
+</ul>
+<h2 id="p5serialserverwebソケットサーバ側">p5.serialserver（Webソケットサーバ側）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/p5-serial/p5.serialserver.git
+</span></span><span style="display:flex;"><span>cd p5.serialserver
+</span></span><span style="display:flex;"><span>npm install
+</span></span><span style="display:flex;"><span>node startserver.js
+</span></span></code></pre></div><h2 id="arduino">Arduino</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ino" data-lang="ino"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> buttonPin <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Serial</span>.<span style="color:#a6e22e">begin</span>(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pinMode</span>(buttonPin, <span style="color:#66d9ef">INPUT</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> buttonIsPressed <span style="color:#f92672">=</span> <span style="color:#a6e22e">digitalRead</span>(buttonPin);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Serial</span>.<span style="color:#a6e22e">write</span>(buttonIsPressed);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><a href="https://rephtone.com/electronics/arduino-buttons/" target="_blank">https://rephtone.com/electronics/arduino-buttons/</a></li>
+<li><a href="https://rephtone.com/wp-content/uploads/2019/06/Fritzing-4-1024x719.jpg" target="_blank">https://rephtone.com/wp-content/uploads/2019/06/Fritzing-4-1024x719.jpg</a></li>
+</ul>
+<h2 id="p5serialportp5js側">p5.serialport（p5.js側）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/p5-serial/p5.serialport.git
+</span></span><span style="display:flex;"><span>cd p5.serialport
+</span></span><span style="display:flex;"><span>python -m http.server <span style="color:#ae81ff">8000</span>
+</span></span></code></pre></div><p><a href="http://127.0.0.1:8000/examples/01-basics/index.html" target="_blank">http://127.0.0.1:8000/examples/01-basics/index.html</a>を開く</p>
+<h2 id="注意事項">注意事項</h2>
+<ul>
+<li>examplesの01-basics以外はポートの更新が正常に動作していない。
+<ul>
+<li>sketch.jsの <code>updatePort()</code> に <code>serial.openPort(serialPortName)</code> を書き足す必要がある</li>
+<li><a href="https://github.com/p5-serial/p5.serialport/tree/main/examples" target="_blank">https://github.com/p5-serial/p5.serialport/tree/main/examples</a>
+<ul>
+<li>2022/01/22 examples修正済み</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>p5.jsとArduinoを接続する</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2022-12-22
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>
