@@ -14,10 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const sketchHolder = document.getElementById('sketch-holder');
     let sketchScript = document.createElement('script');
     const sketchs = [
-        './sketch/01.js',
-        './sketch/02.js',
-        './sketch/03.js',
+        './sketch/github-contributions.js',
+        './sketch/noise.js',
+        './sketch/dog-window.js',
+        './sketch/github-languages.js',
     ];
     sketchScript.src = shuffle(sketchs)[0];
     sketchHolder.parentNode.insertBefore(sketchScript, sketchHolder);
+    const sketchTitle = document.createElement('h1');
+    const parser = new URL(sketchScript.src);
+    sketchTitle.innerText = parser.pathname.split('/').pop();
+    sketchHolder.parentNode.insertBefore(sketchTitle, sketchScript);
 });
