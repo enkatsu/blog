@@ -18,8 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
         './sketch/noise.js',
         './sketch/dog-window.js',
         './sketch/github-languages.js',
+        './sketch/blog-tag-relations01.js',
+        './sketch/blog-tag-relations02.js',
     ];
     sketchScript.src = shuffle(sketchs)[0];
+    // sketchScript.src = './sketch/blog-tag-relations02.js';
     sketchHolder.parentNode.insertBefore(sketchScript, sketchHolder);
     const sketchTitle = document.createElement('h1');
     const parser = new URL(sketchScript.src);

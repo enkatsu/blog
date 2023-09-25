@@ -3,9 +3,6 @@ author = "Katsuya Endoh"
 title = "About"
 date = "2023-01-02"
 description = "about this site"
-tags = [
-    "",
-]
 +++
 
 このサイトは[遠藤勝也](https://enkatsu.org/ja/project/)の備忘録です。
