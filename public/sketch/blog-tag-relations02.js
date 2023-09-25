@@ -44,7 +44,7 @@ async function setup() {
         const tags = li.map(element => element.innerText.match(/^\[(.*)\]$/)[1]);
         const pathPattern = (new URL(postUrl)).pathname.split('/').filter(a => a);
         const body = Bodies.circle(
-            random(100, 400), random(100, 400),
+            random(20, width - 20), random(20, height - 20),
             20,
             {
                 frictionAir: 0.3,
@@ -94,7 +94,7 @@ async function setup() {
         const constraint = Constraint.create({
             bodyA: nodes.find(n => n.url === link.source).body,
             bodyB: nodes.find(n => n.url === link.target).body,
-            length: 180,
+            length: 130,
             stiffness: 0.005,
         });
         link.constraint = constraint;
@@ -108,22 +108,21 @@ async function setup() {
         // Bodies.rectangle(640, 300, 50, 480, { isStatic: true, collisionFilter: { mask: 1 }, }),
         // Bodies.rectangle(0, 300, 50, 480, { isStatic: true, collisionFilter: { mask: 1 }, }),
         Bodies.rectangle(width / 2, 0, width, 50, { isStatic: true }),
-        Bodies.rectangle(width / 2, 480, 640, 50, { isStatic: true }),
-        Bodies.rectangle(640, height / 2, 50, 480, { isStatic: true }),
-        Bodies.rectangle(0, height / 2, 50, 480, { isStatic: true }),
+        Bodies.rectangle(width / 2, height, 640, 50, { isStatic: true }),
+        Bodies.rectangle(width, height / 2, 50, height, { isStatic: true }),
+        Bodies.rectangle(0, height / 2, 50, height, { isStatic: true }),
     ]);
 
-    var render = Render.create({
-        element: document.body,
-        engine: engine,
-        options: {
-            width: width,
-            height: height,
-            showAngleIndicator: true
-        }
-    });
-
-    Render.run(render);
+    // var render = Render.create({
+    //     element: document.body,
+    //     engine: engine,
+    //     options: {
+    //         width: width,
+    //         height: height,
+    //         showAngleIndicator: true
+    //     }
+    // });
+    // Render.run(render);
 }
 
 function draw() {
