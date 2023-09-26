@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="jp">
 
-    <head><title>OSC &ndash; enkatsu log</title>
+    <head><title>SwiftOSCをmacOSアプリ開発に使う方法 &ndash; enkatsu log</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,20 +47,25 @@
 </header>
 
             <section class="page__body">
-    <h1 id="osc">OSC</h1>
-
+    <header class="content__header">
+        <h1>SwiftOSCをmacOSアプリ開発に使う方法</h1>
+    </header>
     
-
-    <ul>
-    
-        <li><a href="https://blog.enkatsu.org/post/osc-broadcaster/">OSC Broadcasterを作った話</a></li>
-
-    
-        <li><a href="https://blog.enkatsu.org/post/swift-osc/">SwiftOSCをmacOSアプリ開発に使う方法</a></li>
-
-    
-    </ul>
-
+    <div class="content__body">
+        <h1 id="swift-package-managerからインストールする方法">Swift Package Managerからインストールする方法</h1>
+<p>下記のPRが出ているが，まだマージされていないので</p>
+<p><a href="https://github.com/ExistentialAudio/SwiftOSC/pull/61" target="_blank">https://github.com/ExistentialAudio/SwiftOSC/pull/61</a></p>
+<p>下記のリポジトリとブランチを指定してインストールする</p>
+<p><a href="https://github.com/soundflix/SwiftOSC/tree/dev" target="_blank">https://github.com/soundflix/SwiftOSC/tree/dev</a></p>
+<h1 id="udpを使用する際のエラー対応">UDPを使用する際のエラー対応</h1>
+<p><code>App Sandbox</code> -&gt; <code>Network</code> -&gt; <code>Incomming Connections (Server)</code> と <code>Outgoing Connections (Client)</code> にチェックを入れる</p>
+<p><img src="/images/swiftosc/swiftosc.png" alt="swiftosc.png"></p>
+<ul>
+<li><a href="https://github.com/Kitura/BlueSocket/issues/103" target="_blank">https://github.com/Kitura/BlueSocket/issues/103</a></li>
+<li><a href="https://stackoverflow.com/questions/47797446/nsposixerrordomain-when-binding-to-socket-on-macos-10-12" target="_blank">https://stackoverflow.com/questions/47797446/nsposixerrordomain-when-binding-to-socket-on-macos-10-12</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
 
             </section>
 
@@ -73,9 +78,25 @@
 </div>
                 <hr>
                 <div class="aside__content">
+    <p>SwiftOSCをmacOSアプリ開発に使う方法</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2022-12-24
+        </p>
     
 
-                    
+    
+
+                    <div class="tags">
+    
+      <span class="tag">
+        <a href="/tags/swift/">[Swift]</a>
+      </span>
+      <span class="tag">
+        <a href="/tags/osc/">[OSC]</a>
+      </span></div>
+  
                 </div>
             </section>
 

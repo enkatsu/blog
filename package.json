@@ -1,5 +1,10 @@
 {
+  "scripts": {
+    "functions:dev": "NODE_OPTIONS='--openssl-legacy-provider' netlify-lambda serve functions/api --port 9000",
+    "functions:build": "NODE_OPTIONS='--openssl-legacy-provider' netlify-lambda build functions/api"
+  },
   "dependencies": {
-    "cypress": "^10.3.1"
+    "cypress": "^10.3.1",
+    "netlify-lambda": "^2.0.16"
   }
 }

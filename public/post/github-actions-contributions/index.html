@@ -55,16 +55,18 @@
         <h1 id="ざっくり解説">ざっくり解説</h1>
 <p>GitHubのcontributions（いわゆる草）は、GitHub APIを使って取得できます。<br>
 ですが、GitHub APIを使うにはAPIトークンが必要です。<br>
-自分は今回、p5.jsを使ってcontributionsを可視化したかったので、
-フロントにAPIトークンを記載することには抵抗がありました。<br>
-しかし、サーバサイドを用意するのもコストがかかります。<br>
-そこで、GitHub Actionsを使って、定期的にcontributionsをJSON形式でGitHub Pagesで公開することにしました。</p>
+自分は、p5.jsを使ってcontributionsを可視化したかったので、
+フロントにAPIトークンを記載したくありませんでした。<br>
+また、サーバサイドを用意するのもコストがかかります。<br>
+そこで、今回はGitHub Actionsを使って、
+定期的にcontributionsをJSON形式でGitHub Pagesで公開することにしました。</p>
 <p>こちらがリポジトリです。</p>
 <p><a href="https://github.com/enkatsu/my-data" target="_blank">https://github.com/enkatsu/my-data</a></p>
 <p>GitHub Actionsの流れは以下のようになっています。</p>
 <ol>
-<li>定期的にGitHub Actionsが実行される</li>
-<li>PythonでGitHub APIを叩いてJSONファイルを保存する</li>
+<li>定期的にGitHub Actionsが実行する</li>
+<li>PythonでGitHub APIを叩いて</li>
+<li>実行結果をJSONファイルに保存する</li>
 <li>gh-pagesブランチにコミットする</li>
 <li>GitHub Pagesをデプロイする</li>
 </ol>
@@ -72,8 +74,10 @@
 <p><a href="https://enkatsu.github.io/my-data/contributions.json" target="_blank">https://enkatsu.github.io/my-data/contributions.json</a></p>
 <h1 id="詳細">詳細</h1>
 <h2 id="pythonを使ったcontributionsの取得">Pythonを使ったcontributionsの取得</h2>
-<p>下記のスクリプトでcontributionsを取得して、<code>data/contributions.json</code> に保存しています。<br>
-GraphQLライブラリは、<a href="https://github.com/graphql-python/gql" target="_blank">gql</a>を使用しています。<br>
+<p>下記のスクリプトでcontributionsを取得して、
+<code>data/contributions.json</code> に保存しています。<br>
+GraphQLライブラリは、
+<a href="https://github.com/graphql-python/gql" target="_blank">gql</a>を使用しています。<br>
 また、ユーザ名は第一引数、認証用のトークンは実行時の第二引数から渡して使用しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gql <span style="color:#f92672">import</span> gql, Client
@@ -124,10 +128,11 @@ GraphQLライブラリは、<a href="https://github.com/graphql-python/gql" targ
 基本的には参考文献のものと同じですが、
 Pythonの実行時に <code>${{ secrets.GH_USER }}</code> と <code>${{ secrets.GITHUB_TOKEN }}</code> を
 引数として渡しています。<br>
-<code>${{ secrets.GITHUB_TOKEN }}</code> は実行時にデフォルトで設定されますが、
-<code>${{ secrets.GH_USER }}</code> は
-<code>https://github.com/${username}/${reponame}/settings/secrets/actions</code>
-から Repository secrets に <code>GH_USER</code> として追加する必要があります。</p>
+<code>${{ secrets.GITHUB_TOKEN }}</code> は、実行時にデフォルトで設定されます。<br>
+<code>${{ secrets.GH_USER }}</code> は、GitHubのユーザ名を
+Repository secrets に <code>GH_USER</code> として追加する必要があります。<br>
+Repository secretsを追加するページはこちらです。<br>
+<code>https://github.com/${username}/${reponame}/settings/secrets/actions</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update data</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
@@ -158,7 +163,7 @@ Pythonの実行時に <code>${{ secrets.GH_USER }}</code> と <code>${{ secrets.
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">gh-pages</span>
 </span></span></code></pre></div><h2 id="可視化する">可視化する</h2>
 <p>あとはp5.jsからAPIを叩いて可視化するだけです。<br>
-こちらはシンプルな折れ線グラフです。</p>
+こちらはシンプルな折れ線グラフで表示してみます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">totalContributions</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">contributions</span> <span style="color:#f92672">=</span> [];
 </span></span><span style="display:flex;"><span>

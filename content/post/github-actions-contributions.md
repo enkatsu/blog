@@ -16,10 +16,11 @@ tags = [
 
 GitHubのcontributions（いわゆる草）は、GitHub APIを使って取得できます。\
 ですが、GitHub APIを使うにはAPIトークンが必要です。\
-自分は今回、p5.jsを使ってcontributionsを可視化したかったので、
-フロントにAPIトークンを記載することには抵抗がありました。\
-しかし、サーバサイドを用意するのもコストがかかります。\
-そこで、GitHub Actionsを使って、定期的にcontributionsをJSON形式でGitHub Pagesで公開することにしました。
+自分は、p5.jsを使ってcontributionsを可視化したかったので、
+フロントにAPIトークンを記載したくありませんでした。\
+また、サーバサイドを用意するのもコストがかかります。\
+そこで、今回はGitHub Actionsを使って、
+定期的にcontributionsをJSON形式でGitHub Pagesで公開することにしました。
 
 こちらがリポジトリです。
 
@@ -27,8 +28,9 @@ https://github.com/enkatsu/my-data
 
 GitHub Actionsの流れは以下のようになっています。
 
-1. 定期的にGitHub Actionsが実行される
-1. PythonでGitHub APIを叩いてJSONファイルを保存する
+1. 定期的にGitHub Actionsが実行する
+1. PythonでGitHub APIを叩いて
+1. 実行結果をJSONファイルに保存する
 1. gh-pagesブランチにコミットする
 1. GitHub Pagesをデプロイする
 
@@ -40,8 +42,10 @@ https://enkatsu.github.io/my-data/contributions.json
 
 ## Pythonを使ったcontributionsの取得
 
-下記のスクリプトでcontributionsを取得して、`data/contributions.json` に保存しています。\
-GraphQLライブラリは、[gql](https://github.com/graphql-python/gql)を使用しています。\
+下記のスクリプトでcontributionsを取得して、
+`data/contributions.json` に保存しています。\
+GraphQLライブラリは、
+[gql](https://github.com/graphql-python/gql)を使用しています。\
 また、ユーザ名は第一引数、認証用のトークンは実行時の第二引数から渡して使用しています。
 
 ```python
@@ -98,11 +102,11 @@ if __name__ == '__main__':
 基本的には参考文献のものと同じですが、
 Pythonの実行時に `${{ secrets.GH_USER }}` と `${{ secrets.GITHUB_TOKEN }}` を
 引数として渡しています。\
-`${{ secrets.GITHUB_TOKEN }}` は実行時にデフォルトで設定されますが、
-`${{ secrets.GH_USER }}` は
+`${{ secrets.GITHUB_TOKEN }}` は、実行時にデフォルトで設定されます。\
+`${{ secrets.GH_USER }}` は、GitHubのユーザ名を
+Repository secrets に `GH_USER` として追加する必要があります。\
+Repository secretsを追加するページはこちらです。\
 `https://github.com/${username}/${reponame}/settings/secrets/actions`
-から Repository secrets に `GH_USER` として追加する必要があります。
-
 
 ```yaml
 name: Update data
@@ -138,7 +142,7 @@ jobs:
 ## 可視化する
 
 あとはp5.jsからAPIを叩いて可視化するだけです。\
-こちらはシンプルな折れ線グラフです。
+こちらはシンプルな折れ線グラフで表示してみます。
 
 ```js
 let totalContributions = -1;
