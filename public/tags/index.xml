@@ -6,7 +6,25 @@
     <description>Recent content in Tags on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arduino</title>
+      <link>https://blog.enkatsu.org/tags/arduino/</link>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Physical computing</title>
+      <link>https://blog.enkatsu.org/tags/physical-computing/</link>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/tags/physical-computing/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>GitHub</title>
       <link>https://blog.enkatsu.org/tags/github/</link>
@@ -107,15 +125,6 @@
     </item>
     
     <item>
-      <title>Arduino</title>
-      <link>https://blog.enkatsu.org/tags/arduino/</link>
-      <pubDate>Sun, 21 May 2023 00:00:00 +0900</pubDate>
-      
-      <guid>https://blog.enkatsu.org/tags/arduino/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Mozzi</title>
       <link>https://blog.enkatsu.org/tags/mozzi/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0900</pubDate>
@@ -184,15 +193,6 @@
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
       
       <guid>https://blog.enkatsu.org/tags/gulp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Physical computing</title>
-      <link>https://blog.enkatsu.org/tags/physical-computing/</link>
-      <pubDate>Sun, 25 Dec 2022 00:00:00 +0900</pubDate>
-      
-      <guid>https://blog.enkatsu.org/tags/physical-computing/</guid>
       <description></description>
     </item>
     

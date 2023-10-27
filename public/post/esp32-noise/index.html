@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+    <head><title>Arduino or ESP32 &#43; IPS LCDモジュールでパーリンノイズを表示する &ndash; enkatsu log</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/risotto.css">
+<link rel="stylesheet" href="https://blog.enkatsu.org/css/custom.css">
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+    <h1 class="page__logo"><a href="https://blog.enkatsu.org" class="page__logo-inner">enkatsu log</a></h1>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/post/" title="">Post</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.enkatsu.org/tags/" title="">Tags</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Arduino or ESP32 + IPS LCDモジュールでパーリンノイズを表示する</h1>
+    </header>
+    
+    <div class="content__body">
+        <p>ESP32 から <a href="https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-5ERX" target="_blank">WaveShare　15867 1.3インチ 240×240 IPS LCD</a> モジュールを使ったのでメモ。<br>
+また、LCDにはパーリンノイズで生成したグラフィックスを表示した。</p>
+<p>この記事にはIPSとIPSという言葉が出てきます。<br>
+<strong>IPSは液晶ディスプレイの一形式</strong>で、<br>
+<strong>SPIはコンピュータ内部で使われるデバイス同士を接続するバス</strong>です。</p>
+<ul>
+<li><a href="https://ja.wikipedia.org/wiki/IPS%E6%96%B9%E5%BC%8F" target="_blank">https://ja.wikipedia.org/wiki/IPS%E6%96%B9%E5%BC%8F</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%BB%E3%83%9A%E3%83%AA%E3%83%95%E3%82%A7%E3%83%A9%E3%83%AB%E3%83%BB%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" target="_blank">https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%BB%E3%83%9A%E3%83%AA%E3%83%95%E3%82%A7%E3%83%A9%E3%83%AB%E3%83%BB%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9</a></li>
+</ul>
+<h1 id="配線">配線</h1>
+<p>個人的には、
+<a href="https://101010.fun/esp32-tft-st7735.html" target="_blank">こちら</a>と
+<a href="https://lang-ship.com/blog/work/m5stickc-spi/#toc1" target="_blank">こちら</a>を
+参考にさせていただいたらSPIの理解が捗りました。</p>
+<h2 id="spiで使用するピンの名称">SPIで使用するピンの名称</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Arduino</th>
+<th style="text-align:left">Master側</th>
+<th style="text-align:left">Slave側</th>
+<th style="text-align:left">別名</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SCK</td>
+<td style="text-align:left">SCK</td>
+<td style="text-align:left">SCK</td>
+<td style="text-align:left">SCLK, SCL</td>
+<td style="text-align:left">データ送信のクロックをマスターが送信する</td>
+</tr>
+<tr>
+<td style="text-align:left">MISO</td>
+<td style="text-align:left">SDI</td>
+<td style="text-align:left">SDO</td>
+<td style="text-align:left">DC, D/C</td>
+<td style="text-align:left">マスターの受信、スレーブの送信をする</td>
+</tr>
+<tr>
+<td style="text-align:left">MOSI</td>
+<td style="text-align:left">SDO</td>
+<td style="text-align:left">SDI</td>
+<td style="text-align:left">SDA</td>
+<td style="text-align:left">マスターの送信、スレーブの受信をする</td>
+</tr>
+<tr>
+<td style="text-align:left">SS</td>
+<td style="text-align:left">SS</td>
+<td style="text-align:left">CS</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">特定スレーブのCSを0Vにすることで通信先を選択する</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arduino-unoor-esp32とlcdモジュールの配線">Arduino UNO（or ESP32）とLCDモジュールの配線</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">TFT LCD</th>
+<th style="text-align:left">ESP32</th>
+<th style="text-align:left">Arduino Uno</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BL</td>
+<td style="text-align:left">未接続</td>
+<td style="text-align:left">未接続</td>
+<td style="text-align:left">バックライト制御</td>
+</tr>
+<tr>
+<td style="text-align:left">CS</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">チップセレクト</td>
+</tr>
+<tr>
+<td style="text-align:left">DC</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">データ/コマンド制御（MISO）</td>
+</tr>
+<tr>
+<td style="text-align:left">RES</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">リセット信号入力</td>
+</tr>
+<tr>
+<td style="text-align:left">SDA</td>
+<td style="text-align:left">23</td>
+<td style="text-align:left">11</td>
+<td style="text-align:left">シリアルデータ入力（MOSI）</td>
+</tr>
+<tr>
+<td style="text-align:left">SCL</td>
+<td style="text-align:left">18</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">シリアルクロック</td>
+</tr>
+<tr>
+<td style="text-align:left">VCC</td>
+<td style="text-align:left">3.3V</td>
+<td style="text-align:left">5V</td>
+<td style="text-align:left">電源</td>
+</tr>
+<tr>
+<td style="text-align:left">GND</td>
+<td style="text-align:left">GND</td>
+<td style="text-align:left">GND</td>
+<td style="text-align:left">Ground</td>
+</tr>
+</tbody>
+</table>
+<h1 id="二次元パーリンノイズ">二次元パーリンノイズ</h1>
+<p>パーリンノイズには、<a href="https://github.com/FastLED/FastLED" target="_blank">FastLED</a>を使用した。</p>
+<p><img src="/images/esp32-noise/2d.png" alt="2d.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Adafruit_GFX.h&gt;     // Core graphics library</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Adafruit_ST7789.h&gt;  // Hardware-specific library for ST7789</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;SPI.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FastLED.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if defined(ESP32)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_RST 4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_DC 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_CS 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_CS 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_RST 9
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_DC 8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Adafruit_ST7789 tft <span style="color:#f92672">=</span> Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> gridSize;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>  Serial.begin(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>  Serial.print(F(<span style="color:#e6db74">&#34;Hello! ST77xx TFT Test&#34;</span>));
+</span></span><span style="display:flex;"><span>  tft.init(<span style="color:#ae81ff">240</span>, <span style="color:#ae81ff">240</span>);
+</span></span><span style="display:flex;"><span>  Serial.println(F(<span style="color:#e6db74">&#34;Initialized&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">uint16_t</span> time <span style="color:#f92672">=</span> millis();
+</span></span><span style="display:flex;"><span>  tft.fillScreen(ST77XX_BLACK);
+</span></span><span style="display:flex;"><span>  time <span style="color:#f92672">=</span> millis() <span style="color:#f92672">-</span> time;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Serial.println(time, DEC);
+</span></span><span style="display:flex;"><span>  delay(<span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  gridSize <span style="color:#f92672">=</span> tft.width() <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+</span></span><span style="display:flex;"><span>  tft.fillScreen(ST77XX_BLACK);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  tft.startWrite();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; x <span style="color:#f92672">&lt;</span> tft.width() <span style="color:#f92672">/</span> gridSize; x<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> n1 <span style="color:#f92672">=</span> inoise8(
+</span></span><span style="display:flex;"><span>      (x <span style="color:#f92672">*</span> gridSize) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>      loopCount <span style="color:#f92672">*</span> <span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> y1 <span style="color:#f92672">=</span> map(n1, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0xFF</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">240</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> n2 <span style="color:#f92672">=</span> inoise8(
+</span></span><span style="display:flex;"><span>      ((x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> gridSize) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>      loopCount <span style="color:#f92672">*</span> <span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> y2 <span style="color:#f92672">=</span> map(n2, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0xFF</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">240</span>);
+</span></span><span style="display:flex;"><span>    tft.writeLine(x <span style="color:#f92672">*</span> gridSize, y1,
+</span></span><span style="display:flex;"><span>                  (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> gridSize, y2,
+</span></span><span style="display:flex;"><span>                  ST77XX_WHITE);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  tft.endWrite();
+</span></span><span style="display:flex;"><span>  loopCount<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="三次元パーリンノイズ">三次元パーリンノイズ</h1>
+<p><img src="/images/esp32-noise/3d.png" alt="3d.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Adafruit_GFX.h&gt;     // Core graphics library</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;Adafruit_ST7789.h&gt;  // Hardware-specific library for ST7789</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;SPI.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FastLED.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if defined(ESP32)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_RST 4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_DC 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_CS 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_CS 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_RST 9
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TFT_DC 8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Adafruit_ST7789 tft <span style="color:#f92672">=</span> Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> gridSize;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>  Serial.begin(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>  Serial.print(F(<span style="color:#e6db74">&#34;Hello! ST77xx TFT Test&#34;</span>));
+</span></span><span style="display:flex;"><span>  tft.init(<span style="color:#ae81ff">240</span>, <span style="color:#ae81ff">240</span>);
+</span></span><span style="display:flex;"><span>  Serial.println(F(<span style="color:#e6db74">&#34;Initialized&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">uint16_t</span> time <span style="color:#f92672">=</span> millis();
+</span></span><span style="display:flex;"><span>  tft.fillScreen(ST77XX_BLACK);
+</span></span><span style="display:flex;"><span>  time <span style="color:#f92672">=</span> millis() <span style="color:#f92672">-</span> time;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Serial.println(time, DEC);
+</span></span><span style="display:flex;"><span>  delay(<span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  gridSize <span style="color:#f92672">=</span> tft.width() <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; y <span style="color:#f92672">&lt;</span> tft.height() <span style="color:#f92672">/</span> gridSize; y<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; x <span style="color:#f92672">&lt;</span> tft.width() <span style="color:#f92672">/</span> gridSize; x<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint8_t</span> n <span style="color:#f92672">=</span> inoise8(
+</span></span><span style="display:flex;"><span>        (x <span style="color:#f92672">*</span> gridSize) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        (y <span style="color:#f92672">*</span> gridSize) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        loopCount <span style="color:#f92672">*</span> <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>      );
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint8_t</span> r <span style="color:#f92672">=</span> map(n, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b11111111</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b00011111</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint8_t</span> g <span style="color:#f92672">=</span> map(n, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b11111111</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b00111111</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint8_t</span> b <span style="color:#f92672">=</span> map(n, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b11111111</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b00011111</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint16_t</span> color <span style="color:#f92672">=</span> (r <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>)) <span style="color:#f92672">+</span> (g <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#ae81ff">5</span>)) <span style="color:#f92672">+</span> (b);
+</span></span><span style="display:flex;"><span>      tft.fillRect(x <span style="color:#f92672">*</span> gridSize, y <span style="color:#f92672">*</span> gridSize, gridSize, gridSize, color);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  loopCount<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>二次元とほとんど変わらないけど、
+白黒だけではなく、グレースケールの濃淡を表示する必要がある。
+なので、ピクセルの色を以下のように16bitのRGB値で表現する必要がある。
+16bitカラーでは、Rが5bit、Bが6bit、Bが5bitで表現されるので、
+それぞれの値をマップし、ビットシフトすることで16bitカラーを計算した。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> r <span style="color:#f92672">=</span> map(n, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b11111111</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b00011111</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> g <span style="color:#f92672">=</span> map(n, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b11111111</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b00111111</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> b <span style="color:#f92672">=</span> map(n, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b11111111</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0b00011111</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint16_t</span> color <span style="color:#f92672">=</span> (r <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>)) <span style="color:#f92672">+</span> (g <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#ae81ff">5</span>)) <span style="color:#f92672">+</span> (b);
+</span></span></code></pre></div><h1 id="詳細">詳細</h1>
+<h2 id="lcd">LCD</h2>
+<h2 id="ノイズについて">ノイズについて</h2>
+<p><a href="https://github.com/FastLED/FastLED" target="_blank">FastLED</a> の <code>inoise8()</code> を使用している．</p>
+<h1 id="参考文献">参考文献</h1>
+<ul>
+<li><a href="https://101010.fun/esp32-tft-st7735.html" target="_blank">https://101010.fun/esp32-tft-st7735.html</a></li>
+<li><a href="https://lang-ship.com/blog/work/m5stickc-spi/#toc1" target="_blank">https://lang-ship.com/blog/work/m5stickc-spi/#toc1</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%BB%E3%83%9A%E3%83%AA%E3%83%95%E3%82%A7%E3%83%A9%E3%83%AB%E3%83%BB%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" target="_blank">https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%BB%E3%83%9A%E3%83%AA%E3%83%95%E3%82%A7%E3%83%A9%E3%83%AB%E3%83%BB%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9</a></li>
+<li><a href="https://github.com/FastLED/FastLED" target="_blank">https://github.com/FastLED/FastLED</a></li>
+<li><a href="https://github.com/adafruit/Adafruit-GFX-Library/blob/master/Adafruit_GFX.h" target="_blank">https://github.com/adafruit/Adafruit-GFX-Library/blob/master/Adafruit_GFX.h</a></li>
+</ul>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>ArduinoやESP32からIPS LCDモジュールを使ってパーリンノイズを描く</p>
+    
+        <p>
+            By Katsuya Endoh, 
+            2023-10-02
+        </p>
+    
+
+    
+
+                    <div class="tags">
+    
+      <span class="tag">
+        <a href="/tags/arduino/">[Arduino]</a>
+      </span>
+      <span class="tag">
+        <a href="/tags/physical-computing/">[Physical computing]</a>
+      </span></div>
+  
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>
