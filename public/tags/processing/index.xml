@@ -6,7 +6,16 @@
     <description>Recent content in Processing on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 04 Aug 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Nov 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ESP32をWi-Fiアクセスポイント化してProcessingと連携させる</title>
+      <link>https://blog.enkatsu.org/post/processing-esp32-wifi/</link>
+      <pubDate>Sun, 12 Nov 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/processing-esp32-wifi/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Processingでマルチウインドウとか</title>
       <link>https://blog.enkatsu.org/post/p5window/</link>

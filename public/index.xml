@@ -8,6 +8,15 @@
     <language>ja</language>
     <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>ESP32をWi-Fiアクセスポイント化してProcessingと連携させる</title>
+      <link>https://blog.enkatsu.org/post/processing-esp32-wifi/</link>
+      <pubDate>Sun, 12 Nov 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.enkatsu.org/post/processing-esp32-wifi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Arduino or ESP32 &#43; IPS LCDモジュールでパーリンノイズを表示する</title>
       <link>https://blog.enkatsu.org/post/esp32-noise/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0900</pubDate>

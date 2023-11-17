@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         './sketch/blog-tag-relations02.js',
     ];
     sketchScript.src = shuffle(sketchs)[0];
-    // sketchScript.src = './sketch/blog-tag-relations02.js';
+    // sketchScript.src = './sketch/blog-tag-relations01.js';
     sketchHolder.parentNode.insertBefore(sketchScript, sketchHolder);
     const sketchTitle = document.createElement('h1');
     const parser = new URL(sketchScript.src);
