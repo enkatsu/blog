@@ -50,11 +50,11 @@ Node-REDはブラウザベースのエディタを提供し、パレットにあ
 
 先に実装したフローを記載しておきます。
 Node-REDは作成したフローをJSONで書き出し、読み込むことができます。
-少し長いのでJSONはページ末尾に記載します。
+少し長いのでJSONは[ページ末尾](#フローを書き出したjson)に記載します。
 
 ![flows.png](/images/node-red-tcp-broadcaster/flows.png)
 
-こちらに配信確認用のProcessingのコードも以下に記載しておきます。
+こちらに配信確認用のProcessingのコードも記載しておきます。
 
 ```java
 import processing.net.*;
@@ -201,7 +201,7 @@ return newMsg;
 
 のようにネストしてしまっているので、
 `TCP:32000配信（tcp outノード）` に渡す前に、
-`配信用フォーマットに変換（functionノード）` によって
+`配信用メッセージ整形（changeノード）` によって
 
 ```js
 {
@@ -214,13 +214,8 @@ return newMsg;
 ```
 
 のように `payload` の中身を取り出してあげる必要があります。
-`配信用フォーマットに変換（functionノード）` のコードは下記の通りです。
 
-```js
-return msg.payload;
-```
-
-最後に、 `配信用フォーマットに変換（functionノード）` によって整形されたメッセージは、
+最後に、 `配信用メッセージ整形（changeノード）` によって整形されたメッセージは、
 `TCP:32000配信（tcp outノード）` に渡されてクライアントに配信されます。
 
 # まとめ
@@ -396,28 +391,7 @@ return msg.payload;
         "y": 100,
         "wires": [
             [
-                "681bd1e8c1477dab"
-            ]
-        ]
-    },
-    {
-        "id": "681bd1e8c1477dab",
-        "type": "function",
-        "z": "700919af87990932",
-        "name": "配信用フォーマットに変換",
-        "func": "return msg.payload;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 100,
-        "wires": [
-            [
-                "fa65aaacca58c9cb",
-                "7851c2f79233a54e"
+                "043f2ee6bbe79646"
             ]
         ]
     },
@@ -509,6 +483,41 @@ return msg.payload;
         "x": 640,
         "y": 260,
         "wires": []
+    },
+    {
+        "id": "043f2ee6bbe79646",
+        "type": "change",
+        "z": "700919af87990932",
+        "name": "配信用メッセージ整形",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload._session",
+                "pt": "msg",
+                "to": "_session",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "7851c2f79233a54e",
+                "fa65aaacca58c9cb"
+            ]
+        ]
     }
 ]
 ```

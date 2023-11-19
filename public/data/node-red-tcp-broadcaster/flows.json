@@ -154,28 +154,7 @@
         "y": 100,
         "wires": [
             [
-                "681bd1e8c1477dab"
-            ]
-        ]
-    },
-    {
-        "id": "681bd1e8c1477dab",
-        "type": "function",
-        "z": "700919af87990932",
-        "name": "配信用フォーマットに変換",
-        "func": "return msg.payload;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 100,
-        "wires": [
-            [
-                "fa65aaacca58c9cb",
-                "7851c2f79233a54e"
+                "043f2ee6bbe79646"
             ]
         ]
     },
@@ -267,5 +246,40 @@
         "x": 640,
         "y": 260,
         "wires": []
+    },
+    {
+        "id": "043f2ee6bbe79646",
+        "type": "change",
+        "z": "700919af87990932",
+        "name": "配信用メッセージ整形",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload._session",
+                "pt": "msg",
+                "to": "_session",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "7851c2f79233a54e",
+                "fa65aaacca58c9cb"
+            ]
+        ]
     }
 ]
