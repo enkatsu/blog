@@ -6,60 +6,56 @@
     <description>Recent content in Processing on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 12 Nov 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node-REDでTCPブロードキャスト用サーバを作る</title>
+      <link>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0900</pubDate>
+      <guid>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ESP32をWi-Fiアクセスポイント化してProcessingと連携させる</title>
       <link>https://blog.enkatsu.org/post/processing-esp32-wifi/</link>
       <pubDate>Sun, 12 Nov 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-esp32-wifi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Processingでマルチウインドウとか</title>
       <link>https://blog.enkatsu.org/post/p5window/</link>
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5window/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Processing（Java）からRustの関数を呼び出す</title>
       <link>https://blog.enkatsu.org/post/processing-rust/</link>
       <pubDate>Sat, 22 Jul 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-rust/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Gradleを使ってProcessingライブラリを作る</title>
       <link>https://blog.enkatsu.org/post/p5library-gradle-template/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5library-gradle-template/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ProcessingでQRコードを使う</title>
       <link>https://blog.enkatsu.org/post/processing-qrcode/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-qrcode/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Processingでフォントのアウトラインを取得する</title>
       <link>https://blog.enkatsu.org/post/p5-font-outline/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5-font-outline/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -6,15 +6,14 @@
     <description>Recent content in Matter.js on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/matter.js/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/matter.js/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>p5.jsとMatter.jsを組み合わせる</title>
       <link>https://blog.enkatsu.org/post/matter-p5js/</link>
       <pubDate>Thu, 05 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/matter-p5js/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

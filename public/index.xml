@@ -6,129 +6,110 @@
     <description>Recent content on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node-REDでTCPブロードキャスト用サーバを作る</title>
+      <link>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0900</pubDate>
+      <guid>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ESP32をWi-Fiアクセスポイント化してProcessingと連携させる</title>
       <link>https://blog.enkatsu.org/post/processing-esp32-wifi/</link>
       <pubDate>Sun, 12 Nov 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-esp32-wifi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Arduino or ESP32 &#43; IPS LCDモジュールでパーリンノイズを表示する</title>
       <link>https://blog.enkatsu.org/post/esp32-noise/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/esp32-noise/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>contributions（草）を可視化する</title>
       <link>https://blog.enkatsu.org/post/github-actions-contributions/</link>
       <pubDate>Sun, 24 Sep 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/github-actions-contributions/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>TUIOのドキュメントを読む</title>
       <link>https://blog.enkatsu.org/post/tuio/</link>
       <pubDate>Tue, 12 Sep 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/tuio/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>openFrameworksで開発したアプリを配布する際のTips: bin/dataを.appに含める方法</title>
       <link>https://blog.enkatsu.org/post/release-of-app/</link>
       <pubDate>Wed, 16 Aug 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/release-of-app/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Processingでマルチウインドウとか</title>
       <link>https://blog.enkatsu.org/post/p5window/</link>
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5window/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Processing（Java）からRustの関数を呼び出す</title>
       <link>https://blog.enkatsu.org/post/processing-rust/</link>
       <pubDate>Sat, 22 Jul 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-rust/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「ボンネットの中」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc03/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc03/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「Mozziスケッチの解剖学」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc02/</link>
       <pubDate>Sat, 20 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc02/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「Mozziについて」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc01/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc01/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OSC Broadcasterを作った話</title>
       <link>https://blog.enkatsu.org/post/osc-broadcaster/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/osc-broadcaster/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>GrasshopperのGHPythonで文字列の曲線を生成する</title>
       <link>https://blog.enkatsu.org/post/rhino-gh-text/</link>
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/rhino-gh-text/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>p5.jsとMatter.jsを組み合わせる</title>
       <link>https://blog.enkatsu.org/post/matter-p5js/</link>
       <pubDate>Thu, 05 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/matter-p5js/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://blog.enkatsu.org/about/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/about/</guid>
       <description>このサイトは遠藤勝也の備忘録です。
 作品未満の成果も載せていこうと思います。
@@ -137,87 +118,68 @@
 お問い合わせはこちらのメールアドレスにお願いします。
 studio[at]enkatsu.org</description>
     </item>
-    
     <item>
       <title>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</title>
       <link>https://blog.enkatsu.org/post/p5js-garally-template/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5js-garally-template/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ArduinoとWiiヌンチャクコントローラでマウスを作る</title>
       <link>https://blog.enkatsu.org/post/arduino-wii-nunchuck/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/arduino-wii-nunchuck/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SwiftOSCをmacOSアプリ開発に使う方法</title>
       <link>https://blog.enkatsu.org/post/swift-osc/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/swift-osc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>UnityでreacTIVisionを使う方法</title>
       <link>https://blog.enkatsu.org/post/unity-reactivision/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/unity-reactivision/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Gradleを使ってProcessingライブラリを作る</title>
       <link>https://blog.enkatsu.org/post/p5library-gradle-template/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5library-gradle-template/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>M5StickCのファームウェア更新方法</title>
       <link>https://blog.enkatsu.org/post/m5stick-update/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/m5stick-update/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>p5.jsとArduinoを接続する</title>
       <link>https://blog.enkatsu.org/post/p5serial/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5serial/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ProcessingでQRコードを使う</title>
       <link>https://blog.enkatsu.org/post/processing-qrcode/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-qrcode/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Processingでフォントのアウトラインを取得する</title>
       <link>https://blog.enkatsu.org/post/p5-font-outline/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5-font-outline/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

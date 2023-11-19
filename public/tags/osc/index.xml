@@ -6,24 +6,21 @@
     <description>Recent content in OSC on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/osc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/osc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OSC Broadcasterを作った話</title>
       <link>https://blog.enkatsu.org/post/osc-broadcaster/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/osc-broadcaster/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SwiftOSCをmacOSアプリ開発に使う方法</title>
       <link>https://blog.enkatsu.org/post/swift-osc/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/swift-osc/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

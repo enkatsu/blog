@@ -1,0 +1,271 @@
+[
+    {
+        "id": "700919af87990932",
+        "type": "tab",
+        "label": "TcpBroadcaster",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "11fbee801eadcae3",
+        "type": "tcp in",
+        "z": "700919af87990932",
+        "name": "TCP:32000接続待ち受け",
+        "server": "server",
+        "host": "",
+        "port": "32000",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "\\n",
+        "topic": "",
+        "trim": true,
+        "base64": false,
+        "tls": "",
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "4a04bf1d702f3141"
+            ]
+        ]
+    },
+    {
+        "id": "7851c2f79233a54e",
+        "type": "tcp out",
+        "z": "700919af87990932",
+        "name": "TCP:32000配信",
+        "host": "",
+        "port": "",
+        "beserver": "reply",
+        "base64": false,
+        "end": false,
+        "tls": "",
+        "x": 780,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a9b4b5e78f37319a",
+        "type": "function",
+        "z": "700919af87990932",
+        "name": "接続時処理",
+        "func": "const sessions = flow.get('sessions');\nconst sessionId = msg.status._session.id;\n\nsessions.push(sessionId);\nflow.set('clients', sessions);\n\nreturn {\n    payload: {\n        sessionId, sessions,\n        message: `${sessions} is connected`,\n    }\n};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set('sessions', []);\n",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 180,
+        "wires": [
+            [
+                "85c467d1e74538f8"
+            ]
+        ]
+    },
+    {
+        "id": "4a04bf1d702f3141",
+        "type": "function",
+        "z": "700919af87990932",
+        "name": "配信先セッションの配列取得",
+        "func": "const sessions = flow.get('sessions');\nconst sessionId = msg._session.id;\n\nconst newMsg = {};\n\nnewMsg.payload = sessions\n    .filter(id => id !== sessionId)\n    .map(id => {\n        return {\n            payload: msg.payload,\n            _session: {\n                id,\n                type: 'tcp',\n            }\n        };\n    });\n\nreturn newMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 40,
+        "wires": [
+            [
+                "4ba0995388769e99"
+            ]
+        ]
+    },
+    {
+        "id": "85c467d1e74538f8",
+        "type": "debug",
+        "z": "700919af87990932",
+        "name": "接続時デバッグ用",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8708d256adb4bae9",
+        "type": "function",
+        "z": "700919af87990932",
+        "name": "切断時処理",
+        "func": "const sessions = flow.get('sessions');\nconst sessionId = msg.status._session.id;\n\nconst newSessions = sessions\n    .filter(id => id !== sessionId);\n\nflow.set('sessions', newSessions);\n\nreturn {\n    payload: {\n        sessions: newSessions,\n        message: `${sessionId} is disconnected`,\n    },\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 220,
+        "wires": [
+            [
+                "4493fc979bb885a8"
+            ]
+        ]
+    },
+    {
+        "id": "4493fc979bb885a8",
+        "type": "debug",
+        "z": "700919af87990932",
+        "name": "切断時デバッグ用",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4ba0995388769e99",
+        "type": "split",
+        "z": "700919af87990932",
+        "name": "配信先セッションの配列を分割",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "_session",
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "681bd1e8c1477dab"
+            ]
+        ]
+    },
+    {
+        "id": "681bd1e8c1477dab",
+        "type": "function",
+        "z": "700919af87990932",
+        "name": "配信用フォーマットに変換",
+        "func": "return msg.payload;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 100,
+        "wires": [
+            [
+                "fa65aaacca58c9cb",
+                "7851c2f79233a54e"
+            ]
+        ]
+    },
+    {
+        "id": "fa65aaacca58c9cb",
+        "type": "debug",
+        "z": "700919af87990932",
+        "name": "配信デバッグ用",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7b68c19fd21af570",
+        "type": "status",
+        "z": "700919af87990932",
+        "name": "TCP:32000接続ステータス監視",
+        "scope": [
+            "11fbee801eadcae3"
+        ],
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "091c3321a37fa488"
+            ]
+        ]
+    },
+    {
+        "id": "091c3321a37fa488",
+        "type": "switch",
+        "z": "700919af87990932",
+        "name": "接続・切断の判定",
+        "property": "status.event",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "connect",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "disconnect",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "a9b4b5e78f37319a"
+            ],
+            [
+                "8708d256adb4bae9"
+            ],
+            [
+                "bb240652b9403990"
+            ]
+        ]
+    },
+    {
+        "id": "bb240652b9403990",
+        "type": "debug",
+        "z": "700919af87990932",
+        "name": "接続・切断以外デバッグ用",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 260,
+        "wires": []
+    }
+]

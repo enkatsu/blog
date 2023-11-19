@@ -6,33 +6,28 @@
     <description>Recent content in Mozzi on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/mozzi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/mozzi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「ボンネットの中」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc03/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc03/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「Mozziスケッチの解剖学」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc02/</link>
       <pubDate>Sat, 20 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc02/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「Mozziについて」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc01/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc01/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

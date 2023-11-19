@@ -154,7 +154,7 @@ Repository secretsを追加するページはこちらです。<br>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pip install -r requirements.txt</span>        
 </span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run script</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        </span>        <span style="color:#ae81ff">python main.py ${{ secrets.GH_USER }} ${{ secrets.GITHUB_TOKEN }}</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        python main.py ${{ secrets.GH_USER }} ${{ secrets.GITHUB_TOKEN }}</span>        
 </span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">deploy</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:

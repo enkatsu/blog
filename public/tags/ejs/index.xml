@@ -6,15 +6,14 @@
     <description>Recent content in EJS on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/ejs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/ejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</title>
       <link>https://blog.enkatsu.org/post/p5js-garally-template/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5js-garally-template/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

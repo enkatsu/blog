@@ -6,24 +6,21 @@
     <description>Recent content in Java on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 22 Jul 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jul 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Processing（Java）からRustの関数を呼び出す</title>
       <link>https://blog.enkatsu.org/post/processing-rust/</link>
       <pubDate>Sat, 22 Jul 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-rust/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Gradleを使ってProcessingライブラリを作る</title>
       <link>https://blog.enkatsu.org/post/p5library-gradle-template/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5library-gradle-template/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

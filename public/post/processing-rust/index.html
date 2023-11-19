@@ -107,37 +107,37 @@ Processingから呼び出す関数を定義しています。</p>
 </span></span></code></pre></div><h2 id="rustで実装した関数のインターフェース定義">Rustで実装した関数のインターフェース定義</h2>
 <p>こちらがRustInstance.pdeの中身です。
 Rustを読み込む処理と、インターフェース定義をしています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jna.Library<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jna.Native<span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jna.Library;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jna.Native;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">RsInterface</span> <span style="color:#66d9ef">extends</span> Library <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> len<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">RsInterface</span> <span style="color:#66d9ef">extends</span> Library {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">sum</span>(<span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> a, <span style="color:#66d9ef">int</span> len);
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RsInterface <span style="color:#a6e22e">buildRsInstance</span><span style="color:#f92672">(</span>String rsLibPath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  String absPath <span style="color:#f92672">=</span> sketchPath<span style="color:#f92672">()</span> <span style="color:#f92672">+</span> rsLibPath<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> Native<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span>absPath<span style="color:#f92672">,</span> RsInterface<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>RsInterface <span style="color:#a6e22e">buildRsInstance</span>(String rsLibPath) {
+</span></span><span style="display:flex;"><span>  String absPath <span style="color:#f92672">=</span> sketchPath() <span style="color:#f92672">+</span> rsLibPath;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> Native.<span style="color:#a6e22e">load</span>(absPath, RsInterface.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="実際に呼び出すコード">実際に呼び出すコード</h2>
 <p>こちらがP5Rust.pdeの中身です。
 Rustの関数呼び出しを行なっています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String RS_LIBRALY_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/rust/target/release/librs.dylib&#34;</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String RS_LIBRALY_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/rust/target/release/librs.dylib&#34;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  RsInterface rsInstance <span style="color:#f92672">=</span> buildRsInstance<span style="color:#f92672">(</span>RS_LIBRALY_PATH<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>  rsInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>  println<span style="color:#f92672">(</span>rsInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>  RsInterface rsInstance <span style="color:#f92672">=</span> buildRsInstance(RS_LIBRALY_PATH);
+</span></span><span style="display:flex;"><span>  rsInstance.<span style="color:#a6e22e">hello</span>();
+</span></span><span style="display:flex;"><span>  println(rsInstance.<span style="color:#a6e22e">add</span>(1, 2));
 </span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> <span style="color:#ae81ff">200000</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> vals <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[</span>N<span style="color:#f92672">];</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> N<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    vals<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> 200000;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> vals <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[</span>N<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> N; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    vals<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1.<span style="color:#a6e22e">0</span>;
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  println<span style="color:#f92672">(</span>rsInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span>vals<span style="color:#f92672">,</span> vals<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  println(rsInstance.<span style="color:#a6e22e">sum</span>(vals, vals.<span style="color:#a6e22e">length</span>));
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="感想">感想</h1>
 <p>正確には測定していないのでここでは言及しませんが、
 以下の点を踏まえればRustで実装した方が処理速度が向上する気がしました。</p>

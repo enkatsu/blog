@@ -6,42 +6,35 @@
     <description>Recent content in p5.js on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/p5.js/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/p5.js/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>contributions（草）を可視化する</title>
       <link>https://blog.enkatsu.org/post/github-actions-contributions/</link>
       <pubDate>Sun, 24 Sep 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/github-actions-contributions/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>p5.jsとMatter.jsを組み合わせる</title>
       <link>https://blog.enkatsu.org/post/matter-p5js/</link>
       <pubDate>Thu, 05 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/matter-p5js/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>p5.jsスケッチを溜めておくためのテンプレートリポジトリを作った</title>
       <link>https://blog.enkatsu.org/post/p5js-garally-template/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5js-garally-template/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>p5.jsとArduinoを接続する</title>
       <link>https://blog.enkatsu.org/post/p5serial/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5serial/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

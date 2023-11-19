@@ -6,69 +6,63 @@
     <description>Recent content in Arduino on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 12 Nov 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node-REDでTCPブロードキャスト用サーバを作る</title>
+      <link>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0900</pubDate>
+      <guid>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ESP32をWi-Fiアクセスポイント化してProcessingと連携させる</title>
       <link>https://blog.enkatsu.org/post/processing-esp32-wifi/</link>
       <pubDate>Sun, 12 Nov 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/processing-esp32-wifi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Arduino or ESP32 &#43; IPS LCDモジュールでパーリンノイズを表示する</title>
       <link>https://blog.enkatsu.org/post/esp32-noise/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/esp32-noise/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「ボンネットの中」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc03/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc03/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「Mozziスケッチの解剖学」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc02/</link>
       <pubDate>Sat, 20 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc02/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mozziのドキュメントを読みつつ翻訳する「Mozziについて」</title>
       <link>https://blog.enkatsu.org/post/mozzi-doc01/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/mozzi-doc01/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ArduinoとWiiヌンチャクコントローラでマウスを作る</title>
       <link>https://blog.enkatsu.org/post/arduino-wii-nunchuck/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/arduino-wii-nunchuck/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>p5.jsとArduinoを接続する</title>
       <link>https://blog.enkatsu.org/post/p5serial/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/p5serial/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -6,15 +6,14 @@
     <description>Recent content in Grasshopper on enkatsu log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.enkatsu.org/tags/grasshopper/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/grasshopper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GrasshopperのGHPythonで文字列の曲線を生成する</title>
       <link>https://blog.enkatsu.org/post/rhino-gh-text/</link>
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0900</pubDate>
-      
       <guid>https://blog.enkatsu.org/post/rhino-gh-text/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

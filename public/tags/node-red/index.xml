@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node-RED on enkatsu log</title>
+    <link>https://blog.enkatsu.org/tags/node-red/</link>
+    <description>Recent content in Node-RED on enkatsu log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://blog.enkatsu.org/tags/node-red/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node-REDでTCPブロードキャスト用サーバを作る</title>
+      <link>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0900</pubDate>
+      <guid>https://blog.enkatsu.org/post/node-red-tcp-broadcaster/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
