@@ -54,6 +54,35 @@ Node-REDは作成したフローをJSONで書き出し、読み込むことが�
 
 ![flows.png](/images/node-red-tcp-broadcaster/flows.png)
 
+## シーケンス図
+
+3台のクライアントが接続した場合のシーケンス図はこちらです。
+
+<pre class="mermaid">
+sequenceDiagram
+    participant client1 as client1
+    participant client2 as client2
+    participant client3 as client3
+    participant nodeRed as Node-RED
+
+    client1 ->> nodeRed: 接続<br>セッションID1
+    Note over nodeRed: 接続時処理<br>接続済みセッションに<br>セッションID1を追加<br>接続済みセッション: [セッションID1]
+    client2 ->> nodeRed: 接続<br>セッションID2
+    Note over nodeRed: 接続時処理<br>接続済みセッションに<br>セッションID2を追加<br>接続済みセッション: [セッションID1, セッションID2]
+    client3 ->> nodeRed: 接続<br>セッションID3
+    Note over nodeRed: 接続時処理<br>接続済みセッションに<br>セッションID3を追加<br>接続済みセッション: [セッションID1, セッションID2, セッションID3]
+    
+    client1 ->> nodeRed: Node-REDに 'test\n' を送信
+    Note over nodeRed: 配信先セッションの配列取得<br>接続済みセッションから<br>セッションID1を<br>除いた配信先を取得<br>配信先: [セッションID2, セッションID3]
+    nodeRed ->> client2: セッションID2に 'test\n' を送信
+    nodeRed ->> client3: セッションID3に 'test\n' を送信
+
+    nodeRed --> client3: 切断<br>セッションID3
+    Note over nodeRed: 切断時処理<br>接続済みセッションから<br>セッションID3を削除<br>接続済みセッション: [セッションID1, セッションID2]
+</pre>
+
+## クライアントのサンプル
+
 こちらに配信確認用のProcessingのコードも記載しておきます。
 
 ```java
